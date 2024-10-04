@@ -14,12 +14,11 @@
  *= require_self
  */
  @font-face {
-    font-family: 'FontAwesome';
-    src: font-url('fontawesome-webfont.eot?v=4.7.0');
-    src: font-url('fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
-         font-url('fontawesome-webfont.woff2?v=4.7.0') format('woff2'),
-         font-url('fontawesome-webfont.woff?v=4.7.0') format('woff'),
-         font-url('fontawesome-webfont.ttf?v=4.7.0') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+     font-family: 'IcoFont';
+     src: url('icofont.woff2') format('woff2'),
+          url('icofont.woff') format('woff'),
+          url('icofont.ttf') format('truetype');
+     font-weight: normal;
+     font-style: normal;
+   }
+   
