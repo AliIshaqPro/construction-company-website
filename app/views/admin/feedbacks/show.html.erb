@@ -1,0 +1,23 @@
+<% content_for :title, "Feedback Details" %>
+
+<h1>Feedback Details</h1>
+
+<p>
+  <strong>Client ID:</strong>
+  <%= @feedback.client_id %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @feedback.content %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @feedback.rating %>
+</p>
+
+<div>
+  <%= link_to "Edit this feedback", edit_admin_feedback_path(@feedback) %> |
+  <%= link_to "Back to Feedbacks", admin_feedbacks_path %>
+</div>

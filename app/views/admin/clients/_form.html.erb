@@ -1,0 +1,33 @@
+<%= form_with(model: @client, url: admin_clients_path, local: true, html: { multipart: true, class: "bg-dark p-4 rounded shadow" }) do |form| %>
+  
+  <% if @client.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+      <ul>
+        <% @client.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label text-light" %>
+    <%= form.text_field :name, class: "form-control bg-dark text-light border-light" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :company, class: "form-label text-light" %>
+    <%= form.text_field :company, class: "form-control bg-dark text-light border-light" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :image, class: "form-label text-light" %>
+    <%= form.file_field :image, class: "form-control bg-dark text-light border-light" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save Client", class: "btn btn-success btn-lg w-100" %>
+  </div>
+
+<% end %>

@@ -1,0 +1,33 @@
+<%= form_with(model: @project, url: admin_projects_path, local: true, html: { multipart: true, class: "bg-dark p-4 rounded shadow" }) do |form| %>
+
+  <% if @project.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+      <ul>
+        <% @project.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label text-light" %>
+    <%= form.text_field :title, class: "form-control bg-dark text-light border-light" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, class: "form-label text-light" %>
+    <%= form.text_area :description, class: "form-control bg-dark text-light border-light", rows: 5 %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :image, class: "form-label text-light" %>
+    <%= form.file_field :image, class: "form-control bg-dark text-light border-light" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save Project", class: "btn btn-success btn-lg w-100" %>
+  </div>
+
+<% end %>

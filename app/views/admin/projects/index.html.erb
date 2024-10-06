@@ -1,0 +1,31 @@
+<p class="text-success"><%= notice %></p>
+
+<% content_for :title, "Projects" %>
+
+<h1 class="mb-4">Projects</h1>
+
+<div id="projects" class="row">
+  <% @projects.each do |project| %>
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h2 class="card-title"><%= project.title %></h2> <!-- Display project title -->
+          <p class="card-text"><strong>Description:</strong> <%= project.description %></p> <!-- Display project description -->
+          <p><strong>Image:</strong></p>
+          <% if project.image.attached? %> <!-- Check if an image is attached -->
+            <%= image_tag project.image, class: "img-fluid mb-3", alt: "#{project.title} Image" %> <!-- Display the project image -->
+          <% else %>
+            <p class="text-muted">No image available</p> <!-- Message when no image is attached -->
+          <% end %>
+          
+          <p>
+            <%= link_to "Show this project", admin_project_path(project), class: "btn btn-primary btn-sm me-2" %>
+            <%= button_to 'Destroy', admin_project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "New project", new_admin_project_path, class: 'btn btn-success mt-4' %>

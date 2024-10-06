@@ -1,0 +1,24 @@
+<% content_for :title, "Feedbacks" %>
+
+<h1 class="mb-4">Feedbacks</h1>
+
+<%= link_to "New Feedback", new_admin_feedback_path, class: "btn btn-primary mb-3" %>
+
+<div id="feedbacks" class="row">
+  <% @feedbacks.each do |feedback| %>
+    <div class="col-md-6 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <p><strong>Client ID:</strong> <%= feedback.client_id %></p>
+          <p><strong>Content:</strong> <%= feedback.content %></p>
+          <p><strong>Rating:</strong> <%= feedback.rating %></p>
+          <p>
+            <%= link_to "Show", admin_feedback_path(feedback), class: "btn btn-info btn-sm me-2" %>
+            <%= link_to "Edit", edit_admin_feedback_path(feedback), class: "btn btn-warning btn-sm me-2" %>
+            <%= button_to "Delete", admin_feedback_path(feedback), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

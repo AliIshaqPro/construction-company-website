@@ -1,0 +1,10 @@
+<% content_for :title, "Editing Feedback" %>
+
+<h1>Editing Feedback</h1>
+
+<%= render "form", feedback: @feedback %>
+
+<div>
+  <%= link_to "Show this feedback", @feedback %> |
+  <%= link_to "Back to Feedbacks", admin_feedbacks_path %>
+</div>
