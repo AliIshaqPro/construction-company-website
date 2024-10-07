@@ -1,26 +1,188 @@
-<h2>Log in</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ali Ishaq Video Background</title>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      overflow-y: auto;
+    }
+
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Ensure video is behind other content */
+      overflow: hidden;
+    }
+
+    .video-background video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Cover the whole background */
+    }
+
+    .content {
+      position: relative; /* To ensure proper stacking */
+      z-index: 1; /* Content is above the video */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      color: white;
+    }
+
+    h1 {
+      font-size: 40px;
+      text-align:center;
+      color:white;
+    }
+
+    p {
+      font-size: 20px;
+    }
+
+    a {
+      font-size: 20px;
+      border: 2px solid white;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    a:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    /* Form container styling */
+    .form-container {
+      width: 100%;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      overflow-y: auto;
+      text-align: left;
+    }
+
+    /* Form title styling */
+    .form-title {
+      font-size: 24px;
+      color: rgba(255, 255, 255, 0.9);
+      text-align: center;
+    }
+
+    /* Form label styling */
+    .form-label {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Form control styling */
+    .form-control {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    /* Submit button styling */
+    .btn-primary {
+      background: rgba(0, 123, 255, 0.7);
+      border: none;
+      color: rgba(255, 255, 255, 0.9);
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .btn-primary:hover {
+      background: rgba(0, 123, 255, 0.9);
+    }
+
+    .container-fluid {
+      width: 70%; /* Set width to 70% of the viewport */
+      max-width: 100%; /* Ensure it doesn't exceed viewport width */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Adjust for smaller screens */
+    @media (max-width: 768px) {
+      .form-container {
+        max-width: 90%;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Video background -->
+  <div class="video-background">
+    <video autoplay muted loop>
+      <source src="https://videos.pexels.com/video-files/856857/856857-uhd_2732_1440_30fps.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  <div class="content">
+    <p class="fs-1 pt-5" style="color:white;">Welcome To Admin Dashoard <br><b>Mr.Shahid Bilal</b> <br> Please Login to Proceed</p>
+    <br>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="container-fluid">
+      <div class="form-container">
+        <h2 class="form-title">Log in</h2>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.label :email, class: 'form-label' %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password, class: 'form-label' %><br />
+            <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, class: 'form-label' %>
+            </div>
+          <% end %>
+
+          <div class="actions">
+            <%= f.submit "Log in", class: 'btn-primary' %>
+          </div>
+        <% end %>
+
+        <div class="links mt-3">
+          <div class="d-flex justify-content-start">
+            <%= link_to "Sign up", new_admin_registration_path, class: "me-3" %>
+            <%= link_to "Forgot your password?", new_admin_password_path, class: "me-3" %>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</body>
+</html>

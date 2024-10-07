@@ -2,7 +2,9 @@ class HomeController < ApplicationController
     def home
         @clients = Client.all  # Fetch all clients
         @projects = Project.all  # Fetch all projects
+        @consultation_request = ConsultationRequest.new
     end
+
     def about
         @clients = Client.all  # Fetch all clients
         @projects = Project.all  # Fetch all projects
@@ -18,6 +20,7 @@ class HomeController < ApplicationController
     def contact
         @clients = Client.all  # Fetch all clients
         @projects = Project.all  # Fetch all projects
+        @consultation_request = ConsultationRequest.new
     end
     
     def new

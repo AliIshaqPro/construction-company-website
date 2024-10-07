@@ -6,8 +6,10 @@ class AdminController < ApplicationController
       @projects = Project.all
       @clients = Client.all
       @feedbacks = Feedback.all
+      @consultation_requests = ConsultationRequest.all
+      @subscriptions = Subscription.all
     end
-  
+    
     # Projects CRUD
     def new_project
       @project = Project.new

@@ -17,6 +17,7 @@
       <!-- Google Fonts -->
       <!-- Optional: Include Bootstrap CSS (if not already included) -->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
       <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
       <!-- Bootstrap CSS -->
       <%= stylesheet_link_tag 'bootstrap.min', media: 'all' %>
@@ -40,23 +41,46 @@
       <%= stylesheet_link_tag 'normalize' %>
       <%= stylesheet_link_tag 'style' %>
       <%= stylesheet_link_tag 'responsive' %>
+      <style>
+         .nav-link, nav-item{
+         border:3px solid #f8f9fa;
+         padding:10px;
+         margin:5px;
+         text-align:center;
+         }
+         .nav-item:hover{
+         background-color:#ced4da;
+         }
+         .logo img {
+         width: 100%;
+         max-width: 150px;
+         }
+         @media (max-width: 768px) {
+         .logo img {
+         max-width: 200px;
+         }
+         }
+         @media (max-width: 576px) {
+         .logo img {
+         max-width: 150px;
+         }
+         }
+      </style>
    </head>
    <body>
-     
       <!-- Header Area -->
-      <header class="header" >
+      <header class="header"  >
          <!-- Topbar -->
-         <div class="topbar">
+         <div class="topbar" >
             <div class="container">
                <div class="row">
                   <div class="col-lg-6 col-md-5 col-12">
                      <!-- Contact -->
-                     
                      <ul class="top-link">
-                        <li><a href="/">About</a></li>
-                        <li><a href="/projects">Projects</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="projects">Projects</a></li>
                         <li><a href="/contact">Contact</a></li>
-                        <li><a href="/services">FAQ</a></li>
+                        <li><a href="/faq">FAQ</a></li>
                      </ul>
                      <!-- End Contact -->
                   </div>
@@ -64,7 +88,7 @@
                      <!-- Top Contact -->
                      <ul class="top-contact">
                         <li><i class="fa fa-phone"></i>+44 7539 367755</li>
-                        <li><i class="fa fa-envelope"></i><a href="mailto:support@yourmail.com">qandqsupport@gmail.com</a></li>
+                        <li><i class="fa fa-envelope"></i><a href="mailto:qandqsupport@gmail.com">qandqsupport@gmail.com</a></li>
                      </ul>
                      <!-- End Top Contact -->
                   </div>
@@ -72,590 +96,48 @@
             </div>
          </div>
          <!-- End Topbar -->
-         <!-- Header Inner -->
-         <div class="header-inner">
-            <div class="container">
-               <div class="inner">
-                  <div class="row">
-                     <div class="col-lg-3 col-md-3 col-12">
-                        <!-- Start Logo -->
-                        <div class="logo" style="width:50%; padding10px; margin-bottom:7px;  border-radius:20px; height:auto;">
-                           <a href="/"><%= image_tag 'logo.png', style:'border-radius:20px;' %></a>
-                        </div>
-                        <!-- End Logo -->
-                        <!-- Mobile Nav -->
-                        <div class="mobile-nav"></div>
-                        <!-- End Mobile Nav -->
-                     </div>
-                     <div class="col-lg-7 col-md-9 col-12">
-                        <!-- Main Menu -->
-                        <div class="main-menu">
-                           <nav class="navigation">
-                              <ul class="nav menu">
-                                 <li><a href="/">Home <i class="icofont-home" style="font-size: 24px;"></i></a></li>
-                                 <li>
-                                    <a href="/projects">Projects <i class="icofont-vehicle-crane" style="font-size: 24px;"></i></a>
-                                    <ul class="dropdown">
-                                       <li><a href="/projects">On Going Projects</a></li>
-                                       <li><a href="/projects">Projects Done</a></li>
-                                    </ul>
-                                 </li>
-                                 <li><a href="/about">About Me <i class="icofont-worker" style="font-size: 24px;"></i></a></li>
-                                 <li><a href="/services">Services <i class="icofont-tools-alt-2" style="font-size: 24px;"></i></a></li>
-                                 <li><a href="/contact">Contact Me</a></li>
-                              </ul>
-                           </nav>
-                        </div>
-                        <!--/ End Main Menu -->
-                     </div>
-                     <div class="col-lg-2 col-12">
-                        <div class="get-quote">
-                           <a href="appointment.html" class="btn">Book Appointment</a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <!--/ End Header Inner -->
       </header>
+      <nav class="navbar navbar-expand-lg bg-transparent" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+         <div class="container-fluid">
+            <div class="logo" style="width:100%; max-width:300px; margin-bottom:7px; border-radius:20px; height:auto;">
+               <a href="/">
+               <%= image_tag 'logo.png', class: 'img-fluid', style: 'border-radius:20px;' %>
+               </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="icofont-tools-alt-2" style="font-size: 34px;"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+               <ul class="navbar-nav me-auto mb-2 mb-lg-2">
+                  <li class="nav-item">
+                     <a class="nav-link active" aria-current="page" href="/">Home <i class="icofont-home" style="font-size: 24px;"></i></a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link active" aria-current="page" href="/about">About Me <i class="icofont-worker" style="font-size: 24px;"></i></a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link active" aria-current="page" href="/services">Services <i class="icofont-tools-alt-2" style="font-size: 24px;"></i></a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link active" aria-current="page" href="/projects">Projects <i class="icofont-vehicle-crane" style="font-size: 24px;"></i></a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link active" aria-current="page" href="/contact">Contact Me <i class="icofont-ui-call" style="font-size: 24px;"></i></a>
+                  </li>
+               </ul>
+               <div class="col-lg-2 col-12" style="padding-left:10px;">
+                  <div class="get-quote">
+                     <a href="/appointment" class="btn">Book Appointment</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </nav>
       <!-- End Header Area -->
-      <!-- Section for Home -->
-      <div class="content-section" id="home-section">
-         <!-- Slider Area -->
-         <section class="slider">
-            <div class="hero-slider">
-               <!-- Start Single Slider -->
-               <div class="single-slider" style="background-image: url('https://images.unsplash.com/photo-1512207736890-6ffed8a84e8d?q=80&w=1479&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
-                  <div class="container">
-                     <div class="row">
-                        <div class="col-lg-7">
-                           <div class="text" style="background-color: rgba(255, 255, 255, 0.7); padding: 20px; border-radius: 20px;">
-                              <h1>We Build <span>Structures</span> That Last for <span>Generations!</span></h1>
-                              <p>From planning to execution, we offer comprehensive construction services that ensure quality and durability in every project.</p>
-                              <div class="button">
-                                 <a href="/contact" class="btn">Get a Quote</a>
-                                 <a href="/projects" class="btn primary">Our Projects</a>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <!-- End Single Slider -->
-               <!-- Start Single Slider -->
-               <div class="single-slider" style="background-image: url('https://images.unsplash.com/photo-1512207736890-6ffed8a84e8d?q=80&w=1479&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
-                  <div class="container">
-                     <div class="row">
-                        <div class="col-lg-7">
-                           <div class="text" style="background-color: rgba(255, 255, 255, 0.7); padding: 20px; border-radius: 20px;">
-                              <h1>Crafting <span>Innovative</span> Solutions for Your <span>Construction Needs!</span></h1>
-                              <p>Whether it’s residential, commercial, or industrial, we are equipped to handle all kinds of construction projects with precision and efficiency.</p>
-                              <div class="button">
-                              <a href="/contact" class="btn">Get a Quote</a>
-                              <a href="/projects" class="btn primary">Our Projects</a>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <!-- Start End Slider -->
-               <!-- Start Single Slider -->
-               <div class="single-slider" style="background-image: url(<%= asset_path('slider2.jpg') %>)">
-                  <div class="container">
-                     <div class="row">
-                        <div class="col-lg-7">
-                           <div class="text" style="background-color: rgba(255, 255, 255, 0.7); padding: 20px; border-radius: 20px;">
-                              <h1>Building <span>Dream Projects</span> with <span>Precision!</span></h1>
-                              <p>Our team of experts ensures every project is executed on time and within budget, while adhering to the highest standards of safety and quality.</p>
-                              <div class="button">
-                              <a href="/contact" class="btn">Get a Quote</a>
-                              <a href="/projects" class="btn primary">Our Projects</a>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <!-- End Single Slider -->
-            </div>
-         </section>
-         <!--/ End Slider Area -->
-         <!-- Start Schedule Area -->
-         <section class="schedule">
-            <div class="container">
-               <div class="schedule-inner">
-                  <div class="row">
-                     <div class="col-lg-4 col-md-6 col-12">
-                        <!-- single-schedule -->
-                        <div class="single-schedule first">
-                           <div class="inner">
-                              <div class="icon">
-                                 <i class="fa fa-hard-hat"></i>
-                              </div>
-                              <div class="single-content">
-                                 <span>24/7 Service</span>
-                                 <h4>Emergency Assistance</h4>
-                                 <p>We provide emergency construction support and repairs whenever you need them, ensuring project continuity and safety.</p>
-                                 <a href="/services">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-4 col-md-6 col-12">
-                        <!-- single-schedule -->
-                        <div class="single-schedule middle">
-                           <div class="inner">
-                              <div class="icon">
-                                 <i class="icofont-construction"></i>
-                              </div>
-                              <div class="single-content">
-                                 <span>Project Planning</span>
-                                 <h4>Construction Schedule</h4>
-                                 <p>Our experts plan detailed project timelines to ensure every phase of construction is executed efficiently and on time.</p>
-                                 <a href="/services">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-4 col-md-6 col-12">
-                        <!-- single-schedule -->
-                        <div class="single-schedule middle">
-                           <div class="inner">
-                              <div class="icon">
-                                 <i class="icofont-construction"></i>
-                              </div>
-                              <div class="single-content">
-                                 <span>Project Planning</span>
-                                 <h4>Construction Schedule</h4>
-                                 <p>Our experts plan detailed project timelines to ensure every phase of construction is executed efficiently and on time.</p>
-                                 <a href="/services">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </section>
-         <!--/End Start Schedule Area -->
-         <!-- Start Features -->
-         <section class="Feautes section">
-            <div class="container">
-               <div class="row">
-                  <div class="col-lg-12">
-                     <div class="section-title">
-                        <h2>Committed to Supporting Your Construction Projects</h2>
-                        <%= image_tag 'section-img.png' %>
-                        <p>We offer comprehensive services to manage all aspects of your construction projects efficiently and effectively.</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-lg-4 col-12">
-                     <!-- Start Single features -->
-                     <div class="single-features">
-                        <div class="signle-icon">
-                           <i class="icofont-clock-time"></i>
-                        </div>
-                        <h3>24/7 Support</h3>
-                        <p>Our team is always available to provide assistance and ensure smooth project progress at every stage.</p>
-                     </div>
-                     <!-- End Single features -->
-                  </div>
-                  <div class="col-lg-4 col-12">
-                     <!-- Start Single features -->
-                     <div class="single-features">
-                        <div class="signle-icon">
-                           <i class="icofont-cement-mix"></i>
-                        </div>
-                        <h3>Materials Management</h3>
-                        <p>We ensure the availability of high-quality construction materials to maintain project standards and timelines.</p>
-                     </div>
-                     <!-- End Single features -->
-                  </div>
-                  <div class="col-lg-4 col-12">
-                     <!-- Start Single features -->
-                     <div class="single-features last">
-                        <div class="signle-icon">
-                           <i class="icofont-safety-hat-light"></i>
-                        </div>
-                        <h3>Safety Assurance</h3>
-                        <p>Our safety protocols ensure a secure working environment, minimizing risks and maximizing productivity.</p>
-                     </div>
-                     <!-- End Single features -->
-                  </div>
-               </div>
-            </div>
-         </section>
-         <!--/ End Features -->
-      </div>
-      <!-- Section for Projects -->
-      <div class="content-section" id="about-me-section" style="display: none;">
-         <!-- Start Fun-facts -->
-         <div id="fun-facts" class="fun-facts section overlay">
-            <div class="container">
-               <div class="row">
-                  <div class="col-lg-3 col-md-6 col-12">
-                     <!-- Start Single Fun -->
-                     <div class="single-fun">
-                        <i class="icofont icofont-building-alt"></i>
-                        <div class="content">
-                           <span class="counter">120</span>
-                           <p>Completed Projects</p>
-                        </div>
-                     </div>
-                     <!-- End Single Fun -->
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-12">
-                     <!-- Start Single Fun -->
-                     <div class="single-fun">
-                        <i class="icofont icofont-workers-group"></i>
-                        <div class="content">
-                           <span class="counter">20</span>
-                           <p>Skilled Workers</p>
-                        </div>
-                     </div>
-                     <!-- End Single Fun -->
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-12">
-                     <!-- Start Single Fun -->
-                     <div class="single-fun">
-                        <i class="icofont icofont-people"></i>
-                        <div class="content">
-                           <span class="counter">97</span>
-                           <p>Community Projects</p>
-                        </div>
-                     </div>
-                     <!-- End Single Fun -->
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-12">
-                     <!-- Start Single Fun -->
-                     <div class="single-fun">
-                        <i class="icofont icofont-history"></i>
-                        <div class="content">
-                           <span class="counter">15</span>
-                           <p>Years in Business</p>
-                        </div>
-                     </div>
-                     <!-- End Single Fun -->
-                  </div>
-               </div>
-            </div>
-         </div>
-         <!--/ End Fun-facts -->
-         <!-- Start Why Choose -->
-         <section class="why-choose section">
-            <div class="container">
-               <div class="row">
-                  <div class="col-lg-12">
-                     <div class="section-title">
-                        <h2>We Offer Expert Construction Services for Your Projects</h2>
-                        <%= image_tag 'section-img.png' %>
-                        <p>Building excellence from the ground up, delivering quality and integrity in every project we undertake.</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-lg-6 col-12">
-                     <!-- Start Choose Left -->
-                     <div class="choose-left">
-                        <h3>Who We Are</h3>
-                        <p>We are a trusted construction company dedicated to providing top-notch construction services, ensuring that each project is built to last.</p>
-                        <p>With a commitment to innovation and sustainability, we bring your visions to life with precision and professionalism.</p>
-                        <div class="row">
-                           <div class="col-lg-6">
-                              <ul class="list">
-                                 <li><i class="fa fa-caret-right"></i>Skilled professionals and expert craftsmanship</li>
-                                 <li><i class="fa fa-caret-right"></i>On-time and on-budget project completion</li>
-                                 <li><i class="fa fa-caret-right"></i>Customized solutions for every project</li>
-                              </ul>
-                           </div>
-                           <div class="col-lg-6">
-                              <ul class="list">
-                                 <li><i class="fa fa-caret-right"></i>Advanced technology and equipment</li>
-                                 <li><i class="fa fa-caret-right"></i>Commitment to safety and quality</li>
-                                 <li><i class="fa fa-caret-right"></i>Exceptional customer service</li>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- End Choose Left -->
-                  </div>
-                  <div class="col-lg-6 col-12">
-                     <!-- Start Choose Rights -->
-                     <div class="choose-right">
-                        <div class="video-image">
-                           <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="Construction Worker on Scaffolding" style="width:100%; height:auto;" />
-                           <a href="https://youtu.be/r-thd4PJKBw?si=kgEvEcCBZDpJhXh6" class="video video-popup mfp-iframe">
-                           <i class="fa fa-play"></i>
-                           </a>
-                        </div>
-                     </div>
-                     <!-- End Choose Rights -->
-                  </div>
-               </div>
-            </div>
-         </section>
-         <!--/ End Why Choose -->
-      </div>
-      <div class="content-section" id="projects-section" style="display: none;">
-         <!--/ End Call to action -->
-         <!--/ End Call to action -->
-         <!-- Start portfolio -->
-         <section class="portfolio section">
-            <div class="container">
-               <div class="row">
-                  <div class="col-lg-12">
-                     <div class="section-title">
-                        <h2>Our Completed Construction Projects</h2>
-                        <%= image_tag 'section-img.png' %>
-                        <p>Explore our diverse portfolio showcasing high-quality construction projects that demonstrate our commitment to excellence and craftsmanship.</p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="container-fluid">
-  <div class="row">
-  <% if @projects.present? %>
-  <% @projects.each do |project| %>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card">
-        <% if project.image.attached? %>
-          <%= image_tag project.image, alt: 'Project Image', class: 'card-img-top', style: 'width: 100%; height: 300px; object-fit: contain;' %>
-        <% else %>
-          <%= image_tag 'slider2.jpg', alt: 'Default Image', class: 'card-img-top', style: 'width: 100%; height: 300px; object-fit: contain;' %> <!-- Fallback image -->
-        <% end %>
-        <div class="card-body text-center">
-          <h5 class="card-title"><%= project.title %></h5>
-          <%= link_to 'View Details', admin_project_path(project), class: 'btn btn-primary' %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-<% else %>
-  <p>No projects available.</p>
-<% end %>
-  </div>
-</div>
-
-         </section>
-         <!--/ End portfolio -->
-      </div>
-      <!-- Section for Services -->
-      <div class="content-section" id="services-section" style="display: none;">
-         <!-- Start service -->
-         <section class="services section">
-            <div class="container">
-               <div class="row">
-                  <div class="col-lg-12">
-                     <div class="section-title">
-                        <h2>We Offer Comprehensive Construction Services</h2>
-                        <%= image_tag 'section-img.png' %>
-                        <p>Our team provides a wide range of construction services designed to meet your building needs efficiently and effectively.</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-lg-4 col-md-6 col-12">
-                     <!-- Start Single Service -->
-                     <div class="single-service">
-                        <i class="icofont icofont-building-alt"></i>
-                        <h4><a href="service-details.html">Residential Construction</a></h4>
-                        <p>From concept to completion, we build high-quality homes with attention to detail and modern architecture.</p>
-                     </div>
-                     <!-- End Single Service -->
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-12">
-                     <!-- Start Single Service -->
-                     <div class="single-service">
-                        <i class="icofont icofont-building-alt"></i> <!-- Alternative Icon for Commercial Construction -->
-                        <h4><a href="service-details.html">Commercial Construction</a></h4>
-                        <p>We deliver commercial projects, including office spaces and retail stores, that meet industry standards.</p>
-                     </div>
-                     <!-- End Single Service -->
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-12">
-                     <!-- Start Single Service -->
-                     <div class="single-service">
-                        <i class="icofont icofont-industries"></i>
-                        <h4><a href="service-details.html">Industrial Projects</a></h4>
-                        <p>We specialize in constructing industrial facilities with precision and efficiency, ensuring long-term durability.</p>
-                     </div>
-                     <!-- End Single Service -->
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-12">
-                     <!-- Start Single Service -->
-                     <div class="single-service">
-                        <i class="icofont icofont-tools"></i>
-                        <h4><a href="service-details.html">Renovation & Remodeling</a></h4>
-                        <p>Our renovation services breathe new life into your spaces, from home interiors to office transformations.</p>
-                     </div>
-                     <!-- End Single Service -->
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-12">
-                     <!-- Start Single Service -->
-                     <div class="single-service">
-                        <i class="icofont icofont-cement-mixer"></i>
-                        <h4><a href="/services">Concrete Works</a></h4>
-                        <p>We provide expert concrete services, including foundation work, sidewalks, and driveways.</p>
-                     </div>
-                     <!-- End Single Service -->
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-12">
-                     <!-- Start Single Service -->
-                     <div class="single-service">
-                        <i class="icofont icofont-excavator"></i>
-                        <h4><a href="service-details.html">Excavation Services</a></h4>
-                        <p>Our skilled team handles all types of excavation projects, ensuring the land is ready for construction.</p>
-                     </div>
-                     <!-- End Single Service -->
-                  </div>
-               </div>
-            </div>
-         </section>
-         <!--/ End service -->
-         <!-- Pricing Table -->
-         <section class="pricing-table section">
-            <div class="container">
-               <div class="row">
-                  <div class="col-lg-12">
-                     <div class="section-title">
-                        <h2>We Provide High-Quality Construction Services at Affordable Rates</h2>
-                        <%= image_tag 'section-img.png' %>
-                        <p>Our pricing structure is designed to offer top-tier construction services that suit your project requirements.</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                  <!-- Single Table -->
-                  <div class="col-lg-4 col-md-12 col-12">
-                     <div class="single-table">
-                        <!-- Table Head -->
-                        <div class="table-head">
-                           <div class="icon">
-                              <i class="icofont icofont-building"></i>
-                           </div>
-                           <h4 class="title">Residential Construction</h4>
-                           <div class="price">
-                              <p class="amount">$1,999<span>/ Per Project</span></p>
-                           </div>
-                        </div>
-                        <!-- Table List -->
-                        <ul class="table-list">
-                           <li><i class="icofont icofont-ui-check"></i>Custom Home Building</li>
-                           <li><i class="icofont icofont-ui-check"></i>Interior and Exterior Design</li>
-                           <li class="cross"><i class="icofont icofont-ui-close"></i>Landscaping</li>
-                           <li class="cross"><i class="icofont icofont-ui-close"></i>Commercial Design</li>
-                           <li class="cross"><i class="icofont icofont-ui-close"></i>Interior Remodeling</li>
-                        </ul>
-                        <div class="table-bottom">
-                           <a class="btn" href="#">Get a Quote</a>
-                        </div>
-                        <!-- Table Bottom -->
-                     </div>
-                  </div>
-                  <!-- End Single Table-->
-                  <!-- Single Table -->
-                  <div class="col-lg-4 col-md-12 col-12">
-                     <div class="single-table">
-                        <!-- Table Head -->
-                        <div class="table-head">
-                           <div class="icon">
-                              <i class="icofont-building-alt"></i>
-                           </div>
-                           <h4 class="title">Commercial Construction</h4>
-                           <div class="price">
-                              <p class="amount">$5,999<span>/ Per Project</span></p>
-                           </div>
-                        </div>
-                        <!-- Table List -->
-                        <ul class="table-list">
-                           <li><i class="icofont icofont-ui-check"></i>Office Buildings</li>
-                           <li><i class="icofont icofont-ui-check"></i>Retail Stores</li>
-                           <li><i class="icofont icofont-ui-check"></i>Restaurant Spaces</li>
-                           <li class="cross"><i class="icofont icofont-ui-close"></i>Industrial Warehouses</li>
-                           <li class="cross"><i class="icofont icofont-ui-close"></i>Large Scale Projects</li>
-                        </ul>
-                        <div class="table-bottom">
-                           <a class="btn" href="#">Get a Quote</a>
-                        </div>
-                        <!-- Table Bottom -->
-                     </div>
-                  </div>
-                  <!-- End Single Table-->
-                  <!-- Single Table -->
-                  <div class="col-lg-4 col-md-12 col-12">
-                     <div class="single-table">
-                        <!-- Table Head -->
-                        <div class="table-head">
-                           <div class="icon">
-                              <i class="icofont-industries-2"></i>
-                           </div>
-                           <h4 class="title">Industrial Projects</h4>
-                           <div class="price">
-                              <p class="amount">$9,999<span>/ Per Project</span></p>
-                           </div>
-                        </div>
-                        <!-- Table List -->
-                        <ul class="table-list">
-                           <li><i class="icofont icofont-ui-check"></i>Factory Construction</li>
-                           <li><i class="icofont icofont-ui-check"></i>Warehouse Development</li>
-                           <li><i class="icofont icofont-ui-check"></i>Logistics Centers</li>
-                           <li><i class="icofont icofont-ui-check"></i>Machinery Installation</li>
-                           <li><i class="icofont icofont-ui-check"></i>High-End Manufacturing Facilities</li>
-                        </ul>
-                        <div class="table-bottom">
-                           <a class="btn" href="#">Get a Quote</a>
-                        </div>
-                        <!-- Table Bottom -->
-                     </div>
-                  </div>
-                  <!-- End Single Table-->
-               </div>
-            </div>
-         </section>
-         <!-- Start Clients -->
-         <div class="clients overlay">
-            <div class="container">
-               <div class="row">
-                  <div class="col-lg-12 col-md-12 col-12">
-                     <center style="padding:20px;">
-                        <h1>Clients</h1>
-                     </center>
-                     <div class="row">
-                        <!-- Display Clients -->
-                        <% @clients.each do |client| %>
-                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                              <div class="card">
-                                <% if client.image.attached? %>
-                                  <%= image_tag client.image, style: 'width: 100%; height: 200px; object-fit: cover;', class: 'card-img-top' %>
-                                <% else %>
-                                  <%= image_tag 'logo.png', style: 'width: 100%; height: 200px; object-fit: cover;', class: 'card-img-top' %>
-                                <% end %>
-                                <div class="card-body text-center">
-                                  <h5 class="card-title"><%= client.name %></h5>
-                                  <p><strong>Company:</strong> <%= client.company %></p> <!-- Display company -->
-                                  <p><strong>Joined:</strong> <%= client.created_at.strftime("%B %d, %Y") %></p> <!-- Display joined date -->
-                                  <%= link_to 'View Details', admin_client_path(client), class: 'btn btn-primary' %> <!-- Link to client details -->
-                                </div>
-                              </div>
-                            </div>
-                          <% end %>
-                          
-                          
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <!-- End Clients -->
-         <!--/ End Pricing Table -->
-      </div>
+     
       <!-- Start Contact -->
       <!-- Section for Contact Me -->
-      <div class="content-section" id="contact-section" style="display: none;">
+      
          <section class="call-action overlay" data-stellar-background-ratio="0.5">
             <div class="container">
                <div class="row">
@@ -664,8 +146,8 @@
                         <h2>Need Reliable Construction Services? Call Me at<br> +44 7539 367755</h2>
                         <p>We provide quality construction services tailored to your needs. From residential to commercial projects, our experienced team is here to help you build your dreams.</p>
                         <div class="button">
-                           <a href="#" class="btn">Get a Quote</a>
-                           <a href="#" class="btn second">Learn More<i class="fa fa-long-arrow-right"></i></a>
+                           <a href="/contact" class="btn">Get a Quote</a>
+                           <a href="/services-details" class="btn second">Learn More<i class="fa fa-long-arrow-right"></i></a>
                         </div>
                      </div>
                   </div>
@@ -685,73 +167,32 @@
                </div>
                <div class="row">
                   <div class="col-lg-6 col-md-12 col-12">
-                     <form class="form" action="#">
-                        <div class="row">
-                           <div class="col-lg-6 col-md-6 col-12">
-                              <div class="form-group">
-                                 <input name="name" type="text" placeholder="Name">
-                              </div>
+                  <%= form_with(model: @consultation_request, local: true) do |form| %>
+                     <div class="row">
+                       <div class="col-lg-12 col-md-12 col-12">
+                         <div class="form-group">
+                           <%= form.label :message, class: 'form-label' %>
+                           <%= form.text_area :message, placeholder: 'Describe Your Project...', class: 'form-control' %>
+                           <% if @consultation_request.errors[:message].any? %>
+                             <div class="text-danger"><%= @consultation_request.errors[:message].first %></div>
+                           <% end %>
+                         </div>
+                       </div>
+                     </div>
+                     <div class="row">
+                       <div class="col-lg-5 col-md-4 col-12">
+                         <div class="form-group">
+                           <div class="button">
+                             <%= form.submit 'Schedule Consultation', class: 'btn btn-primary' %>
                            </div>
-                           <div class="col-lg-6 col-md-6 col-12">
-                              <div class="form-group">
-                                 <input name="email" type="email" placeholder="Email">
-                              </div>
-                           </div>
-                           <div class="col-lg-6 col-md-6 col-12">
-                              <div class="form-group">
-                                 <input name="phone" type="text" placeholder="Phone">
-                              </div>
-                           </div>
-                           <div class="col-lg-6 col-md-6 col-12">
-                              <div class="form-group">
-                                 <div class="nice-select form-control wide" tabindex="0">
-                                    <span class="current">Project Type</span>
-                                    <ul class="list">
-                                       <li data-value="1" class="option selected">Project Type</li>
-                                       <li data-value="2" class="option">Commercial</li>
-                                       <li data-value="3" class="option">Industrial</li>
-                                       <li data-value="4" class="option">Residential</li>
-                                    </ul>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-lg-6 col-md-6 col-12">
-                              <div class="form-group">
-                                 <div class="nice-select form-control wide" tabindex="0">
-                                    <span class="current">Consultant</span>
-                                    <ul class="list">
-                                       <li data-value="1" class="option selected">Consultant</li>
-                                       <li data-value="2" class="option">John Smith</li>
-                                       <li data-value="3" class="option">Jane Doe</li>
-                                       <li data-value="4" class="option">Michael Clark</li>
-                                    </ul>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-lg-6 col-md-6 col-12">
-                              <div class="form-group">
-                                 <input type="text" placeholder="Preferred Date" id="datepicker">
-                              </div>
-                           </div>
-                           <div class="col-lg-12 col-md-12 col-12">
-                              <div class="form-group">
-                                 <textarea name="message" placeholder="Describe Your Project..."></textarea>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-lg-5 col-md-4 col-12">
-                              <div class="form-group">
-                                 <div class="button">
-                                    <button type="submit" class="btn">Schedule Consultation</button>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-lg-7 col-md-8 col-12">
-                              <p>( We will confirm your appointment via phone or email )</p>
-                           </div>
-                        </div>
-                     </form>
+                         </div>
+                       </div>
+                       <div class="col-lg-7 col-md-8 col-12">
+                         <p>( We will confirm your appointment via phone or email )</p>
+                       </div>
+                     </div>
+                   <% end %>
+                   
                   </div>
                   <div class="col-lg-6 col-md-12">
                      <div class="appointment-image">
@@ -778,11 +219,10 @@
                   <div class="col-lg-6 col-12">
                      <!-- Start Newsletter Form -->
                      <div class="subscribe-form">
-                        <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
-                           <input name="EMAIL" placeholder="Your email address" class="common-input" onfocus="this.placeholder = ''"
-                              onblur="this.placeholder = 'Your email address'" required="" type="email">
-                           <button class="btn">Subscribe</button>
-                        </form>
+                        <%= form_with(model: Subscription.new, url: newsletters_path, local: true, class: 'newsletter-inner') do |form| %>
+                        <%= form.email_field :email, placeholder: 'Your email address', class: 'common-input', required: true, onfocus: "this.placeholder = ''", onblur: "this.placeholder = 'Your email address'" %>
+                        <%= form.submit 'Subscribe', class: 'btn' %>
+                        <% end %>
                      </div>
                      <!-- End Newsletter Form -->
                   </div>
@@ -854,7 +294,7 @@
             </div>
          </section>
          <!-- End Blog Area -->
-      </div>
+      <
       <!-- /End Newsletter Area -->
       <!-- Footer Area -->
       <footer id="footer" class="footer ">
@@ -868,11 +308,11 @@
                         <p>We are a trusted construction company with decades of experience, delivering high-quality projects on time and within budget. From residential to commercial builds, we bring your vision to life.</p>
                         <!-- Social -->
                         <ul class="social">
-                           <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                           <li><a href="#"><i class="icofont-google-plus"></i></a></li>
-                           <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                           <li><a href="#"><i class="icofont-vimeo"></i></a></li>
-                           <li><a href="#"><i class="icofont-pinterest"></i></a></li>
+                           <li><a href="/"><i class="icofont-facebook"></i></a></li>
+                           <li><a href="/"><i class="icofont-google-plus"></i></a></li>
+                           <li><a href="/"><i class="icofont-twitter"></i></a></li>
+                           <li><a href="/"><i class="icofont-vimeo"></i></a></li>
+                           <li><a href="/"><i class="icofont-pinterest"></i></a></li>
                         </ul>
                         <!-- End Social -->
                      </div>
@@ -883,20 +323,20 @@
                         <div class="row">
                            <div class="col-lg-6 col-md-6 col-12">
                               <ul>
-                                 <li><a href="/dashboard"><i class="fa fa-caret-right" aria-hidden="true"></i>Home</a></li>
-                                 <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a></li>
-                                 <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Our Services</a></li>
-                                 <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Projects</a></li>
-                                 <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Careers</a></li>
+                                 <li><a href="/dashboard"><i class="fa fa-caret-right" aria-hidden="true"></i>Admin Panel</a></li>
+                                 <li><a href="/about"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a></li>
+                                 <li><a href="/services"><i class="fa fa-caret-right" aria-hidden="true"></i>Our Services</a></li>
+                                 <li><a href="/projects"><i class="fa fa-caret-right" aria-hidden="true"></i>Projects</a></li>
+                                 <li><a href="/careers"><i class="fa fa-caret-right" aria-hidden="true"></i>Careers</a></li>
                               </ul>
                            </div>
                            <div class="col-lg-6 col-md-6 col-12">
                               <ul>
-                                 <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Consulting</a></li>
-                                 <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Estimations</a></li>
-                                 <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Testimonials</a></li>
-                                 <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>FAQs</a></li>
-                                 <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact Us</a></li>
+                                 <li><a href="/contact"><i class="fa fa-caret-right" aria-hidden="true"></i>Consulting</a></li>
+                                 <li><a href="/contact"><i class="fa fa-caret-right" aria-hidden="true"></i>Estimations</a></li>
+                                 <li><a href="/services"><i class="fa fa-caret-right" aria-hidden="true"></i>Testimonials</a></li>
+                                 <li><a href="/faq"><i class="fa fa-caret-right" aria-hidden="true"></i>FAQs</a></li>
+                                 <li><a href="/contact"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact Us</a></li>
                               </ul>
                            </div>
                         </div>
@@ -917,19 +357,16 @@
                      <div class="single-footer">
                         <h2>Newsletter</h2>
                         <p>Subscribe to our newsletter for updates on our latest projects, industry insights, and special offers.</p>
-                        <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
-                           <input name="email" placeholder="Email Address" class="common-input" onfocus="this.placeholder = ''"
-                              onblur="this.placeholder = 'Your email address'" required="" type="email">
-                           <button class="button"><i class="icofont icofont-paper-plane"></i></button>
-                        </form>
-                        
+                        <%= form_with(model: Subscription.new, url: newsletters_path, local: true, class: 'newsletter-inner') do |form| %>
+                        <%= form.email_field :email, placeholder: 'Email Address', class: 'common-input', required: true, onfocus: "this.placeholder = ''", onblur: "this.placeholder = 'Your email address'" %>
+                        <button class="button"><i class="icofont icofont-paper-plane"></i></button>
+                        <% end %>
                      </div>
                   </div>
                </div>
             </div>
          </div>
          <!--/ End Footer Top -->
-         
          <!-- Copyright -->
          <div class="copyright">
             <div class="container">
@@ -986,7 +423,44 @@
       <!-- Main JS -->
       <%= javascript_include_tag 'main' %>
       <script>
-        
+         document.addEventListener('DOMContentLoaded', function() {
+             const links = document.querySelectorAll('.nav.menu a');
+             const sections = document.querySelectorAll('.content-section');
+         
+             links.forEach(link => {
+                 link.addEventListener('click', function(event) {
+                     event.preventDefault(); // Prevent the default anchor click behavior
+         
+                     // Hide all sections
+                     sections.forEach(section => {
+                         section.style.display = 'none';
+                     });
+         
+                     // Show the section based on the link clicked
+                     switch (link.id) {
+                         case 'home-link':
+                             document.getElementById('home-section').style.display = 'block';
+                             break;
+                         case 'projects-link':
+                             document.getElementById('projects-section').style.display = 'block';
+                             break;
+                         case 'about-me-link':
+                             document.getElementById('about-me-section').style.display = 'block';
+                             break;
+                         case 'services-link':
+                             document.getElementById('services-section').style.display = 'block';
+                             break;
+                         case 'contact-link':
+                             document.getElementById('contact-section').style.display = 'block';
+                             break;
+                     }
+                 });
+             });
+         
+             // By default, display the Home section
+             document.getElementById('home-section').style.display = 'block';
+         });
       </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
    </body>
 </html>
