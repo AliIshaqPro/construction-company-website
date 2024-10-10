@@ -169,9 +169,54 @@
                   <div class="col-lg-6 col-md-12 col-12">
                   <%= form_with(model: @consultation_request, local: true) do |form| %>
                      <div class="row">
+                       <!-- Name Field -->
+                       <div class="col-lg-6 col-md-6 col-12">
+                         <div class="form-group">
+                           <%= form.label :name, 'Name', class: 'form-label' %>
+                           <%= form.text_field :name, placeholder: 'Your Name', class: 'form-control' %>
+                           <% if @consultation_request.errors[:name].any? %>
+                             <div class="text-danger"><%= @consultation_request.errors[:name].first %></div>
+                           <% end %>
+                         </div>
+                       </div>
+                   
+                       <!-- Email Field -->
+                       <div class="col-lg-6 col-md-6 col-12">
+                         <div class="form-group">
+                           <%= form.label :email, 'Email', class: 'form-label' %>
+                           <%= form.email_field :email, placeholder: 'Your Email', class: 'form-control' %>
+                           <% if @consultation_request.errors[:email].any? %>
+                             <div class="text-danger"><%= @consultation_request.errors[:email].first %></div>
+                           <% end %>
+                         </div>
+                       </div>
+                   
+                       <!-- Phone Field -->
+                       <div class="col-lg-6 col-md-6 col-12">
+                         <div class="form-group">
+                           <%= form.label :phone, 'Phone Number', class: 'form-label' %>
+                           <%= form.text_field :phone, placeholder: 'Your Phone Number', class: 'form-control' %>
+                           <% if @consultation_request.errors[:phone].any? %>
+                             <div class="text-danger"><%= @consultation_request.errors[:phone].first %></div>
+                           <% end %>
+                         </div>
+                       </div>
+                   
+                       <!-- Project Type Field -->
+                       <div class="col-lg-6 col-md-6 col-12">
+                         <div class="form-group">
+                           <%= form.label :project_type, 'Project Type', class: 'form-label' %>
+                           <%= form.select :project_type, options_for_select([['Select Project Type', ''], ['Commercial', 'Commercial'], ['Residential', 'Residential'], ['Industrial', 'Industrial']]), class: 'form-control' %>
+                           <% if @consultation_request.errors[:project_type].any? %>
+                             <div class="text-danger"><%= @consultation_request.errors[:project_type].first %></div>
+                           <% end %>
+                         </div>
+                       </div>
+                   
+                       <!-- Message Field -->
                        <div class="col-lg-12 col-md-12 col-12">
                          <div class="form-group">
-                           <%= form.label :message, class: 'form-label' %>
+                           <%= form.label :message, 'Message', class: 'form-label' %>
                            <%= form.text_area :message, placeholder: 'Describe Your Project...', class: 'form-control' %>
                            <% if @consultation_request.errors[:message].any? %>
                              <div class="text-danger"><%= @consultation_request.errors[:message].first %></div>
@@ -179,6 +224,8 @@
                          </div>
                        </div>
                      </div>
+                   
+                     <!-- Submit Button -->
                      <div class="row">
                        <div class="col-lg-5 col-md-4 col-12">
                          <div class="form-group">

@@ -140,41 +140,168 @@
         padding: 20px;
       }
     }
+    @media (max-width: 1200px) {
+  .sidebar {
+    width: 220px;
+  }
+
+  .content {
+    margin-left: 240px;
+  }
+
+  .sidebar .admin-profile img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .content-wrapper {
+    padding: 20px;
+  }
+
+  table th, table td {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .content {
+    margin-left: 220px;
+  }
+
+  .sidebar h2 {
+    font-size: 18px;
+  }
+
+  table th, table td {
+    font-size: 13px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+
+  .content-wrapper {
+    padding: 15px;
+  }
+
+  table th, table td {
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .sidebar ul li a {
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar h2, .sidebar .admin-profile h4, .sidebar .admin-profile p {
+    text-align: left;
+  }
+
+  .sidebar ul li a {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .content-wrapper {
+    padding: 10px;
+  }
+
+  table th, table td {
+    font-size: 11px;
+  }
+
+  h1 {
+    font-size: 18px;
+  }
+
+  .sidebar .admin-profile img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 400px) {
+  table {
+    font-size: 10px;
+  }
+
+  h1 {
+    font-size: 16px;
+  }
+
+  .sidebar {
+    padding: 10px;
+  }
+
+  .sidebar .admin-profile img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .content-wrapper {
+    padding: 5px;
+  }
+
+  table th, table td {
+    font-size: 9px;
+  }
+}
+
   </style>
 </head>
 <body>
   <div class="d-flex">
     <!-- Sidebar -->
     <nav class="sidebar">
-    <div class="admin-profile" style="text-align: center; margin-bottom: 30px;">
+  <div class="admin-profile" style="text-align: center; margin-bottom: 30px;">
     <%= image_tag 'logo.png', alt: 'Admin Image', style: 'width: 100px; height: 100px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);' %>
     <h4 style="color: #fff; margin-top: 10px; font-size: 18px; font-weight: 600;">Shahid Bilal</h4>
     <p style="color: #ced4da; font-size: 14px;">Administrator</p>
   </div>
-  
 
-      <h2>Navigation</h2>
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <%= link_to 'Manage Projects', admin_projects_path, class: 'nav-link active' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Manage Clients', admin_clients_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Manage Feedbacks', admin_feedbacks_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Consultation Requests', admin_consultation_requests_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= button_to 'Log Out', destroy_admin_session_path, method: :delete, class: 'btn btn-custom mt-3' %>
-        </li>
-
-
-        
-      </ul>
-    </nav>
+  <h2>Navigation</h2>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <%= link_to 'Manage Projects', admin_projects_path, class: 'nav-link active' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Manage Clients', admin_clients_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Manage Feedbacks', admin_feedbacks_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Consultation Requests', admin_consultation_requests_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Manage FAQs', admin_faqs_path, class: 'nav-link' %> <!-- New link for FAQs -->
+    </li>
+    <li class="nav-item">
+      <%= button_to 'Log Out', destroy_admin_session_path, method: :delete, class: 'btn btn-custom mt-3' %>
+    </li>
+  </ul>
+</nav>
 
     <!-- Main Content -->
     <div class="content container-fluid">

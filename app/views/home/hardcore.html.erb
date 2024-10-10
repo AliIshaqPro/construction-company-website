@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardcore Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            padding: 20px;
+        }
+        .calculator {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        .calculator h2 {
+            text-align: center;
+            color: #333;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        .input-group input:invalid {
+            border-color: red;
+        }
+        .calculate-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .calculate-btn:hover {
+            background-color: #0056b3;
+        }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 9999;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+        }
+        .popup h3 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .close-popup {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 5px;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+            display: none;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <h2>Hardcore Calculator</h2>
+    <div id="error" class="error"></div>
+    <div class="input-group">
+        <label for="length">Length (metres):</label>
+        <input type="number" id="length" min="0" placeholder="Enter length in metres">
+    </div>
+    <div class="input-group">
+        <label for="width">Width (metres):</label>
+        <input type="number" id="width" min="0" placeholder="Enter width in metres">
+    </div>
+    <div class="input-group">
+        <label for="depth">Depth (mm):</label>
+        <input type="number" id="depth" min="0" placeholder="Enter depth in mm">
+    </div>
+    <div class="input-group">
+        <label for="compaction">Include 20% extra for compacting:</label>
+        <input type="checkbox" id="compaction">
+    </div>
+    <button class="calculate-btn" onclick="calculateHardcore()">Calculate</button>
+</div>
+
+<div class="popup" id="resultPopup">
+    <h3>Result</h3>
+    <p id="resultText"></p>
+    <button class="close-popup" onclick="closePopup()">Close</button>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<script>
+    function calculateHardcore() {
+        const length = parseFloat(document.getElementById('length').value);
+        const width = parseFloat(document.getElementById('width').value);
+        const depth = parseFloat(document.getElementById('depth').value) / 1000; // Convert mm to metres
+        const compaction = document.getElementById('compaction').checked;
+        const errorDiv = document.getElementById('error');
+
+        // Clear previous error message
+        errorDiv.innerHTML = "";
+
+        if (isNaN(length) || isNaN(width) || isNaN(depth) || length <= 0 || width <= 0 || depth <= 0) {
+            errorDiv.innerHTML = 'Please enter valid dimensions (positive numbers).';
+            return;
+        }
+
+        // Calculate volume in cubic metres
+        let volume = length * width * depth;
+        if (compaction) {
+            volume *= 1.2; // Add 20% for compaction
+        }
+
+        // Weight calculations (arbitrary values for loose and compacted weight)
+        const looseFillWeight = volume * 1.5; // Assume loose fill weight in tonnes/m³
+        const compactedWeight = volume * 2.64; // Assume compacted weight in tonnes/m³
+
+        // Display the results in the popup
+        document.getElementById('resultText').innerHTML = `
+            Volume (cubic metres): ${volume.toFixed(2)}<br>
+            Loose fill weight (tonnes): ${looseFillWeight.toFixed(2)}<br>
+            Compacted weight (tonnes): ${compactedWeight.toFixed(2)}
+        `;
+
+        openPopup();
+    }
+
+    function openPopup() {
+        document.getElementById('resultPopup').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('resultPopup').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

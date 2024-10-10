@@ -1,0 +1,25 @@
+<h1>Manage FAQs</h1>
+
+<%= link_to 'Create New FAQ', new_admin_faq_path, class: 'btn btn-primary' %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Answer</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @faqs.each do |faq| %>
+      <tr>
+        <td><%= faq.question %></td>
+        <td><%= faq.answer %></td>
+        <td>
+          <%= link_to 'Edit', edit_admin_faq_path(faq), class: 'btn btn-warning' %>
+          <%= link_to 'Delete', admin_faq_path(faq), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

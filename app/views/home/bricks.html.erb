@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brick Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            padding: 20px;
+        }
+        .calculator {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        .calculator h2 {
+            text-align: center;
+            color: #333;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        .calculate-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .calculate-btn:hover {
+            background-color: #218838;
+        }
+        /* Popup */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 9999;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+        }
+        .popup h3 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .close-popup {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 5px;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <h2>Brick Calculator</h2>
+    <div class="input-group">
+        <label for="length">Length (metres):</label>
+        <select id="length">
+            <option value="" disabled selected>Select length</option>
+            <option value="3">3 m</option>
+            <option value="4">4 m</option>
+            <option value="5">5 m</option>
+            <option value="6">6 m</option>
+            <option value="7">7 m</option>
+            <option value="8">8 m</option>
+            <option value="10">10 m</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <label for="height">Height (metres):</label>
+        <select id="height">
+            <option value="" disabled selected>Select height</option>
+            <option value="2.5">2.5 m</option>
+            <option value="3">3 m</option>
+            <option value="3.5">3.5 m</option>
+            <option value="4">4 m</option>
+            <option value="5">5 m</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <label for="mortar">Mortar joint (mm):</label>
+        <select id="mortar">
+            <option value="10">10 mm</option>
+            <option value="12">12 mm</option>
+            <option value="15">15 mm</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <label for="brickLength">Brick Length (mm):</label>
+        <select id="brickLength">
+            <option value="215">215 mm</option>
+            <option value="190">190 mm</option>
+            <option value="230">230 mm</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <label for="brickHeight">Brick Height (mm):</label>
+        <select id="brickHeight">
+            <option value="65">65 mm</option>
+            <option value="75">75 mm</option>
+            <option value="90">90 mm</option>
+        </select>
+    </div>
+    <button class="calculate-btn" onclick="calculateBricks()">Calculate</button>
+</div>
+
+<!-- Popup for result -->
+<div class="popup" id="resultPopup">
+    <h3>Materials Required</h3>
+    <p id="resultText"></p>
+    <button class="close-popup" onclick="closePopup()">Close</button>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<script>
+    function calculateBricks() {
+        const length = parseFloat(document.getElementById('length').value);
+        const height = parseFloat(document.getElementById('height').value);
+        const mortar = parseFloat(document.getElementById('mortar').value) / 1000; // Convert mm to metres
+        const brickLength = parseFloat(document.getElementById('brickLength').value) / 1000; // Convert mm to metres
+        const brickHeight = parseFloat(document.getElementById('brickHeight').value) / 1000; // Convert mm to metres
+
+        if (isNaN(length) || isNaN(height) || isNaN(mortar) || isNaN(brickLength) || isNaN(brickHeight)) {
+            alert('Please select valid dimensions');
+            return;
+        }
+
+        const wallArea = length * height; // in square metres
+        const brickArea = (brickLength + mortar) * (brickHeight + mortar); // in square metres
+        const bricksRequired = Math.ceil(wallArea / brickArea); // Total bricks
+
+        document.getElementById('resultText').innerHTML = `
+            Area (sq m): ${wallArea.toFixed(2)}<br>
+            Bricks required: ${bricksRequired}
+        `;
+
+        openPopup();
+    }
+
+    function openPopup() {
+        document.getElementById('resultPopup').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('resultPopup').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

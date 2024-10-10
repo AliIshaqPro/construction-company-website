@@ -22,3 +22,89 @@
      font-style: normal;
    }
    
+    
+   .nav-link, .nav-item {
+        
+         
+     text-align: center;
+  }
+  
+  .nav-item:hover {
+     background-color: #ced4da;
+  }
+  
+  .logo img {
+     width: 100%;
+     
+  }
+  
+  @media (max-width: 768px) {
+     .logo img {
+        max-width: 300px;
+     }
+  }
+  
+  @media (max-width: 576px) {
+     .logo img {
+        max-width: 150px;
+     }
+  }
+
+  a {
+color: white; /* Default link color */
+text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+color: lightblue; /* Color on hover */
+}
+
+a:visited {
+color: white; /* Keep the same color for visited links */
+}
+
+  .popup {
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     background-color: #fff;
+     padding: 20px;
+     display: none;
+     z-index: 9999;
+     border-radius: 10px;
+     text-align: center;
+ }
+ .button-container {
+     margin: 20px 0;
+ }
+ .popup-button {
+     display: inline-block;
+     margin: 10px;
+     padding: 10px 15px;
+     background-color: #007bff;
+     color: white;
+     text-decoration: none;
+     border-radius: 5px;
+ }
+ .popup-button:hover {
+     background-color: black;
+ }
+ .close-popup {
+     background-color:black;
+     color: white;
+     padding: 10px;
+     border: none;
+     cursor: pointer;
+     font-size: 16px;
+     border-radius: 5px;
+ }
+ .overlay {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     z-index: 9998;
+     display: none;
+ }
