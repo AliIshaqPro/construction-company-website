@@ -21,90 +21,11 @@
       background-color: #f4f6f9;
     }
 
-    .sidebar {
-      background-color: #343a40;
-      height: 100vh;
-      padding: 20px;
-      position: fixed;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      width: 250px;
-    }
-
-    .sidebar .admin-profile {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .sidebar .admin-profile img {
+    .admin-profile img {
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .sidebar .admin-profile h4 {
-      color: #fff;
-      margin-top: 10px;
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .sidebar .admin-profile p {
-      color: #ced4da;
-      font-size: 14px;
-    }
-
-    .sidebar h2 {
-      color: #fff;
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
-
-    .sidebar ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    .sidebar ul li {
-      margin-bottom: 10px;
-    }
-
-    .sidebar ul li a {
-      color: #ced4da;
-      text-decoration: none;
-      display: block;
-      padding: 10px 15px;
-      border-radius: 5px;
-      transition: all 0.3s;
-      font-weight: 500;
-    }
-
-    .sidebar ul li a:hover,
-    .sidebar ul li a.active {
-      background-color: #495057;
-      color: #fff;
-    }
-
-    .content {
-      margin-left: 270px;
-      padding: 20px;
-    }
-
-    .btn-custom {
-      background-color: #dc3545;
-      border: none;
-      font-weight: 500;
-    }
-
-    .btn-custom:hover {
-      background-color: #c82333;
-    }
-
-    .content-wrapper {
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
     }
 
     h1 {
@@ -112,203 +33,75 @@
       font-weight: 600;
       margin-bottom: 20px;
     }
-
-    table thead th {
-      background-color: #f8f9fa;
-    }
-
-    .table-bordered {
-      border: 1px solid #dee2e6;
-    }
-
-    .table-bordered th, .table-bordered td {
-      border: 1px solid #dee2e6;
-    }
-
-    @media (max-width: 768px) {
-      .sidebar {
-        position: static;
-        width: 100%;
-        height: auto;
-      }
-
-      .content {
-        margin-left: 0;
-      }
-
-      .content-wrapper {
-        padding: 20px;
-      }
-    }
-    @media (max-width: 1200px) {
-  .sidebar {
-    width: 220px;
-  }
-
-  .content {
-    margin-left: 240px;
-  }
-
-  .sidebar .admin-profile img {
-    width: 80px;
-    height: 80px;
-  }
-
-  .content-wrapper {
-    padding: 20px;
-  }
-
-  table th, table td {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 992px) {
-  .sidebar {
-    width: 200px;
-  }
-
-  .content {
-    margin-left: 220px;
-  }
-
-  .sidebar h2 {
-    font-size: 18px;
-  }
-
-  table th, table td {
-    font-size: 13px;
-  }
-
-  h1 {
-    font-size: 22px;
-  }
-}
-
-@media (max-width: 768px) {
-  .sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
-  }
-
-  .content {
-    margin-left: 0;
-  }
-
-  .content-wrapper {
-    padding: 15px;
-  }
-
-  table th, table td {
-    font-size: 12px;
-  }
-
-  h1 {
-    font-size: 20px;
-  }
-
-  .sidebar ul li a {
-    padding: 8px 10px;
-  }
-}
-
-@media (max-width: 576px) {
-  .sidebar h2, .sidebar .admin-profile h4, .sidebar .admin-profile p {
-    text-align: left;
-  }
-
-  .sidebar ul li a {
-    padding: 6px 8px;
-    font-size: 12px;
-  }
-
-  .content-wrapper {
-    padding: 10px;
-  }
-
-  table th, table td {
-    font-size: 11px;
-  }
-
-  h1 {
-    font-size: 18px;
-  }
-
-  .sidebar .admin-profile img {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-@media (max-width: 400px) {
-  table {
-    font-size: 10px;
-  }
-
-  h1 {
-    font-size: 16px;
-  }
-
-  .sidebar {
-    padding: 10px;
-  }
-
-  .sidebar .admin-profile img {
-    width: 50px;
-    height: 50px;
-  }
-
-  .content-wrapper {
-    padding: 5px;
-  }
-
-  table th, table td {
-    font-size: 9px;
-  }
-}
-
   </style>
 </head>
 <body>
-  <div class="d-flex">
-    <!-- Sidebar -->
-    <nav class="sidebar">
-  <div class="admin-profile" style="text-align: center; margin-bottom: 30px;">
-    <%= image_tag 'logo.png', alt: 'Admin Image', style: 'width: 100px; height: 100px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);' %>
-    <h4 style="color: #fff; margin-top: 10px; font-size: 18px; font-weight: 600;">Shahid Bilal</h4>
-    <p style="color: #ced4da; font-size: 14px;">Administrator</p>
-  </div>
+  <!-- Navbar -->
+  <% content_for :show_navbar do %>
+    <!-- Skip the navbar -->
+  <% end %>
+  
+  <% content_for :show_footer do %>
+    <!-- Skip the footer -->
+  <% end %>
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Admin Panel</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <%= link_to 'Manage Projects', admin_projects_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Manage Clients', admin_clients_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Manage Feedbacks', admin_feedbacks_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Consultation Requests', admin_consultation_requests_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Manage FAQs', admin_faqs_path, class: 'nav-link' %> 
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Manage Sliders', sliders_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= button_to 'Log Out', destroy_admin_session_path, method: :delete, class: 'btn btn-danger ms-2' %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <h2>Navigation</h2>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <%= link_to 'Manage Projects', admin_projects_path, class: 'nav-link active' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to 'Manage Clients', admin_clients_path, class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to 'Manage Feedbacks', admin_feedbacks_path, class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to 'Consultation Requests', admin_consultation_requests_path, class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to 'Manage FAQs', admin_faqs_path, class: 'nav-link' %> <!-- New link for FAQs -->
-    </li>
-    <li class="nav-item">
-      <%= button_to 'Log Out', destroy_admin_session_path, method: :delete, class: 'btn btn-custom mt-3' %>
-    </li>
-  </ul>
-</nav>
+  <!-- Profile Section -->
+  <div class="container mt-4">
+    <div class="d-flex justify-content-center mb-4">
+      <div class="text-center">
+        <%= image_tag 'logo.png', alt: 'Admin Image', class: 'img-fluid admin-profile' %>
+        <h4 class="mt-2">Shahid Bilal</h4>
+        <p class="text-muted">Administrator</p>
+      </div>
+    </div>
 
     <!-- Main Content -->
-    <div class="content container-fluid">
-      <div class="content-wrapper">
-        <h1>Consultation Requests</h1>
-        <table class="table table-hover table-bordered">
-          <thead>
+    <div class="row">
+      <!-- Consultation Requests -->
+      <div class="col-12 mb-4">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      Consultation Requests
+    </div>
+    <div class="card-body">
+      <!-- Use the table-responsive class for responsiveness -->
+      <div class="table-responsive">
+        <table class="table table-hover table-bordered w-100">
+          <thead class="table-light">
             <tr>
               <th>Name</th>
               <th>Email</th>
@@ -342,29 +135,45 @@
           </tbody>
         </table>
       </div>
-      <div class="content-wrapper">
-        <h1>Subscription Requests</h1>
-        <table class="table table-hover table-bordered">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Email Address</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @subscriptions.each do |subscription| %>
+    </div>
+  </div>
+</div>
+
+
+<!-- Subscription Requests -->
+<div class="col-12">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      Subscription Requests
+    </div>
+    <div class="card-body">
+      <!-- Add table-responsive for responsiveness -->
+      <div class="table-responsive">
+        <table class="table table-hover table-bordered w-100">
+          <thead class="table-light">
             <tr>
-              <td><%= subscription.id %></td>
-              <td><%= subscription.email %></td>
-              <td>
-                <%= link_to 'Delete', admin_subscription_path(subscription), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
-              </td>
+              <th>ID</th>
+              <th>Email Address</th>
+              <th>Actions</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @subscriptions.each do |subscription| %>
+              <tr>
+                <td><%= subscription.id %></td>
+                <td><%= subscription.email %></td>
+                <td>
+                  <%= link_to 'Delete', admin_subscription_path(subscription), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
+    </div>
+  </div>
+</div>
+
     </div>
   </div>
 

@@ -22,7 +22,9 @@
      font-style: normal;
    }
    
-    
+    body{
+      background-color: black;
+    }
    .nav-link, .nav-item {
         
          

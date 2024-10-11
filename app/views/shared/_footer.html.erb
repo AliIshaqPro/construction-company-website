@@ -1,0 +1,85 @@
+<!-- Footer Area -->
+<footer id="footer" class="footer ">
+   <!-- Footer Top -->
+   <div class="footer-top">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-3 col-md-6 col-12">
+               <div class="single-footer">
+                  <h2>About Us</h2>
+                  <p>We are a trusted construction company with decades of experience, delivering high-quality projects on time and within budget. From residential to commercial builds, we bring your vision to life.</p>
+                  <!-- Social -->
+                  <ul class="social">
+                     <li><a href="/"><i class="icofont-facebook"></i></a></li>
+                     <li><a href="/"><i class="icofont-google-plus"></i></a></li>
+                     <li><a href="/"><i class="icofont-twitter"></i></a></li>
+                     <li><a href="/"><i class="icofont-vimeo"></i></a></li>
+                     <li><a href="/"><i class="icofont-pinterest"></i></a></li>
+                  </ul>
+                  <!-- End Social -->
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+               <div class="single-footer f-link">
+                  <h2>Quick Links</h2>
+                  <div class="row">
+                     <div class="col-lg-6 col-md-6 col-12">
+                        <ul>
+                           <li><a href="/dashboard"><i class="fa fa-caret-right" aria-hidden="true"></i>Admin Panel</a></li>
+                           <li><a href="/about"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a></li>
+                           <li><a href="/services"><i class="fa fa-caret-right" aria-hidden="true"></i>Our Services</a></li>
+                           <li><a href="/projects"><i class="fa fa-caret-right" aria-hidden="true"></i>Projects</a></li>
+                           <li><a href="/careers"><i class="fa fa-caret-right" aria-hidden="true"></i>Careers</a></li>
+                        </ul>
+                     </div>
+                     <div class="col-lg-6 col-md-6 col-12">
+                        <ul>
+                           <li><a href="/contact"><i class="fa fa-caret-right" aria-hidden="true"></i>Consulting</a></li>
+                           <li><a href="/contact"><i class="fa fa-caret-right" aria-hidden="true"></i>Estimations</a></li>
+                           <li><a href="/services"><i class="fa fa-caret-right" aria-hidden="true"></i>Testimonials</a></li>
+                           <li><a href="/faq"><i class="fa fa-caret-right" aria-hidden="true"></i>FAQs</a></li>
+                           <li><a href="/contact"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact Us</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+               <div class="single-footer">
+                  <h2>Open Hours</h2>
+                  <p>We’re available to assist you with all your construction needs during the following hours:</p>
+                  <ul class="time-sidual">
+                     <li class="day">Monday - Friday <span>8.00-20.00</span></li>
+                     <li class="day">Saturday <span>9.00-18.30</span></li>
+                     <li class="day">Sunday <span>Closed</span></li>
+                  </ul>
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+               <div class="single-footer">
+                  <h2>Newsletter</h2>
+                  <p>Subscribe to our newsletter for updates on our latest projects, industry insights, and special offers.</p>
+                  <%= form_with(model: Subscription.new, url: newsletters_path, local: true, class: 'newsletter-inner') do |form| %>
+                  <%= form.email_field :email, placeholder: 'Email Address', class: 'common-input', required: true, onfocus: "this.placeholder = ''", onblur: "this.placeholder = 'Your email address'" %>
+                  <button class="button"><i class="icofont icofont-paper-plane"></i></button>
+                  <% end %>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!--/ End Footer Top -->
+   <!-- Copyright -->
+   <div class="copyright">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 col-md-12 col-12">
+               <div class="copyright-content">
+                  <p>© Copyright 2024  |  All Rights Reserved by <b>Quick And Quality.LTD</b></p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!--/ End Copyright -->
+</footer>

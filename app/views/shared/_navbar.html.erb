@@ -1,0 +1,80 @@
+<nav class="navbar navbar-expand-lg" style="background-color: transparent; backdrop-filter: blur(10px);">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="logo" style="width:100%; max-width:200px; height:auto;">
+                <a href="/">
+                    <%= image_tag 'logo2.png', class: 'img-fluid' %>
+                </a>
+            </div>
+            <button class="navbar-toggler" style="margin-left:130px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="icofont-tools-alt-2" style="font-size: 34px;"></i></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" style="padding-left:70px;" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home <i class="icofont-home" style="font-size: 24px;"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/about">About Us <i class="icofont-worker" style="font-size: 24px;"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/services">Services <i class="icofont-tools-alt-2" style="font-size: 24px;"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/projects">Projects <i class="icofont-vehicle-crane" style="font-size: 24px;"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/contact">Contact Us <i class="icofont-ui-call" style="font-size: 24px;"></i></a>
+                </li>
+            </ul>
+            <div class="col-lg-2 col-12" style="padding-left:10px;">
+                <div class="get-quote">
+                    <a href="/appointment" class="btn">Book Appointment</a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-12" style="margin:10px; margin-left:10px;">
+                <div class="get-quote">
+                    <a href="#" class="btn" onclick="openPopup(event)">Materials Calculator</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+      <div class="popup" id="calculatorPopup">
+      <h3>Select a Calculator</h3>
+      <div class="button-container">
+         <a href="/tiles-calculator" class="popup-button">Tiles Calculator</a>
+         <a href="/concrete-calculator" class="popup-button">Concrete Calculator</a>
+         <a href="/bricks-calculator" class="popup-button">Bricks Calculator</a>
+         <a href="/paint-calculator" class="popup-button">Paint Calculator</a>
+         <a href="/hardcore-calculator" class="popup-button">Hardcore Calculator</a>
+         <a href="/loft-insulation-calculator" class="popup-button">Loft Insulation Calculator</a>
+      </div>
+      <button class="close-popup" onclick="closePopup()">Close</button>
+   </div>
+   <div class="overlay" id="overlay"></div>
+
+   
+   <script>
+   window.onscroll = function() { updateProgressBar() };
+
+   function updateProgressBar() {
+     var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+     var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+     var scrolled = (winScroll / height) * 100;
+     document.getElementById("progress-bar").style.width = scrolled + "%";
+   }
+
+   function openPopup(event) {
+     event.preventDefault(); 
+     document.getElementById('calculatorPopup').style.display = 'block';
+     document.getElementById('overlay').style.display = 'block';
+   }
+
+   function closePopup() {
+     document.getElementById('calculatorPopup').style.display = 'none';
+     document.getElementById('overlay').style.display = 'none';
+   }
+ </script>

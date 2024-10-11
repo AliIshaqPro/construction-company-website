@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,9 +147,14 @@
       Your browser does not support the video tag.
     </video>
   </div>
-
+ <% content_for :show_navbar do %>
+  <!-- Skip the navbar -->
+<% end %>
   <div class="content">
-    <p class="fs-1 pt-5" style="color:white;">Welcome To Admin Dashoard <br><b>Mr.Shahid Bilal</b> <br> Please Login to Proceed</p>
+ 
+
+
+    <p class="fs-1 pt-5" style="color:white; margin-bottom:10px;"><b>Mr.Shahid Bilal</b> <br> Please Login to Proceed</p>
     <br>
 
     <div class="container-fluid">
@@ -174,15 +182,11 @@
             <%= f.submit "Log in", class: 'btn-primary' %>
           </div>
         <% end %>
-
-        <div class="links mt-3">
-          <div class="d-flex justify-content-start">
-            <%= link_to "Sign up", new_admin_registration_path, class: "me-3" %>
-            <%= link_to "Forgot your password?", new_admin_password_path, class: "me-3" %>
-          </div>
-        </div>
       </div>
     </div>
   </div>
+  <% content_for :show_footer do %>
+  <!-- Skip the footer -->
+<% end %>
 </body>
 </html>

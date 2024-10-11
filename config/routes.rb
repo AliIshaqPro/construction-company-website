@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "consultation_requests/index"
   end
+  resources :sliders
   get "consultation_requests/new"
   get "consultation_requests/create"
   # Set the admin index as the root path

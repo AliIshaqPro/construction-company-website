@@ -3,6 +3,7 @@ class HomeController < ApplicationController
         @clients = Client.all  # Fetch all clients
         @projects = Project.all  # Fetch all projects
         @consultation_request = ConsultationRequest.new
+        @sliders = Slider.all
     end
 
     def about

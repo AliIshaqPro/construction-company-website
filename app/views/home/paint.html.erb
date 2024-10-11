@@ -147,27 +147,32 @@
 <div class="overlay" id="overlay"></div>
 
 <script>
-    function calculatePaint() {
-        const height = parseFloat(document.getElementById('height').value);
-        const length = parseFloat(document.getElementById('length').value);
-        const coats = parseFloat(document.getElementById('coats').value);
-        const aperture = parseFloat(document.getElementById('aperture').value);
 
-        if (isNaN(height) || isNaN(length) || isNaN(coats) || height <= 0 || length <= 0 || coats <= 0) {
-            alert('Please enter valid values');
-            return;
-        }
+function calculatePaint() {
+    const height = parseFloat(document.getElementById('height').value);
+    const length = parseFloat(document.getElementById('length').value);
+    const coats = parseFloat(document.getElementById('coats').value);
+    const aperture = parseFloat(document.getElementById('aperture').value);
 
-        // Assuming 1 litre of paint covers 10 sq m with 1 coat
-        const wallArea = (height * length) - aperture; // Total wall area excluding windows/doors
-        const totalPaint = (wallArea * coats) / 10; // Litres of paint needed
+    console.log('Height:', height);
+    console.log('Length:', length);
+    console.log('Coats:', coats);
+    console.log('Aperture:', aperture);
 
-        document.getElementById('resultText').innerHTML = `
-            Paint required (litres): ${totalPaint.toFixed(2)}
-        `;
-
-        openPopup();
+    if (isNaN(height) || isNaN(length) || isNaN(coats) || height <= 0 || length <= 0 || coats <= 0) {
+        alert('Please enter valid values');
+        return;
     }
+
+    // Assuming 1 litre of paint covers 10 sq m with 1 coat
+    const wallArea = (height * length) - aperture; // Total wall area excluding windows/doors
+    const totalPaint = (wallArea * coats) / 10; // Litres of paint needed
+
+    console.log('Total Paint Required:', totalPaint); // Check if the calculation is correct
+    document.getElementById('resultText').innerHTML = `Paint required (litres): ${totalPaint.toFixed(2)}`;
+
+    openPopup();
+}
 
     function openPopup() {
         document.getElementById('resultPopup').style.display = 'block';
