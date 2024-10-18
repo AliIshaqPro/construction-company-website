@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.assets.compile = true
+  config.assets.compile = false
   config.assets.digest = true
   config.assets.precompile += %w( .svg .eot .woff .ttf .png .jpg .jpeg .gif )
   
