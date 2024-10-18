@@ -21,13 +21,13 @@ Rails.application.configure do
   # config.require_master_key = true
 
   # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
-  # config.public_file_server.enabled = false
+  config.public_file_server.enabled = false
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
 
   # Do not fall back to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
@@ -99,5 +99,11 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-  config.hosts << "6249-103-170-179-121.ngrok-free.app"
+  # In config/environments/production.rb
+
+# Allow specific hosts to access the application
+config.hosts << "www.qnqbuilders.co.uk"  # Allow the domain with "www"
+config.hosts << "qnqbuilders.co.uk"      # Allow the domain without "www"
+config.hosts << "18.169.211.50"          # Allow the specific Elastic IP (public IP of the server)
+
 end
