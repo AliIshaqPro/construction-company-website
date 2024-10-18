@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.assets.compile = false
+  config.assets.compile = true
   config.assets.digest = true
   config.assets.precompile += %w( .svg .eot .woff .ttf .png .jpg .jpeg .gif )
   
@@ -25,7 +25,7 @@ Rails.application.configure do
     # config.require_master_key = true
   
     # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
-    # config.public_file_server.enabled = false
+    config.public_file_server.enabled = true
   
     # Compress CSS using a preprocessor.
     # config.assets.css_compressor = :sass
