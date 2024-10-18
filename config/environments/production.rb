@@ -6,7 +6,10 @@ Rails.application.configure do
   config.assets.precompile += %w( .svg .eot .woff .ttf .png .jpg .jpeg .gif )
   
     # Settings specified here will take precedence over those in config/application.rb.
-  
+  # config/environments/production.rb
+
+config.action_controller.asset_host = 'https://qnqbuilders.co.uk'
+
     # Code is not reloaded between requests.
     config.enable_reloading = false
   
