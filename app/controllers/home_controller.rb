@@ -4,7 +4,9 @@ class HomeController < ApplicationController
         @projects = Project.all  # Fetch all projects
         @consultation_request = ConsultationRequest.new
         @sliders = Slider.all
+         
     end
+    
 
     def ourwork
         @gallery = Gallery.new
