@@ -1,15 +1,13 @@
 <nav class="navbar navbar-expand-lg" style="background-color:#edede9;padding-top:40px; backdrop-filter: blur(10px);">
-    <div class="container-fluid">
-        <div class="d-flex">
-            <div class="logo" style="width: 100%; max-width:300px; height:auto;">
-                <a href="/">
-                    <%= image_tag 'logo2.png', class: 'img-fluid', style: 'width:auto; height:100px;' %>
-                </a>
-            </div>
-            <button class="navbar-toggler" style="margin-left:50%;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon" ><i class="icofont-energy-water" style="font-size: 44px;"></i></span>
-            </button>
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+        <div class="logo" style="max-width:300px; height:auto;">
+            <a href="/">
+                <%= image_tag 'logo2.png', class: 'img-fluid', style: 'width:auto; height:100px;' %>
+            </a>
         </div>
+        <button class="navbar-toggler" id="navbar-toggler-button" style="margin-right:10px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="icofont-energy-water" style="font-size: 44px;"></i></span>
+        </button>
         <div class="collapse navbar-collapse" style="padding-left:70px;" id="navbarTogglerDemo02">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -30,21 +28,29 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/contact">Contact Us <i class="icofont-ui-call" style="font-size: 24px;"></i></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/appointment">Book Appointment <i class="icofont-calendar" style="font-size: 24px;"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" onclick="openPopup(event)" aria-current="page" href="#">Materials Calculator <i class="icofont-ui-call" style="font-size: 24px;"></i></a>
+                </li>
             </ul>
-           
-            <div class="col-lg-2 col-12" style="padding-left:10px;">
-                <div class="get-quote">
-                    <a href="/appointment" class="btn">Book Appointment</a>
-                </div>
-            </div>
-            <div class="col-lg-2 col-12" style="margin:10px; margin-left:10px;">
-                <div class="get-quote">
-                    <a href="#" class="btn" onclick="openPopup(event)">Materials Calculator</a>
-                </div>
-            </div>
         </div>
     </div>
 </nav>
+
+<!-- Inline CSS for media query -->
+<style>
+    @media (max-width: 992px) {
+        #navbar-toggler-button {
+            margin-left: auto; /* Push toggle button to the right */
+            margin-right: 10px; /* Add 10px margin from the right */
+        }
+        .navbar-collapse {
+            text-align: center; /* Center-align the items in collapsed mode */
+        }
+    }
+</style>
 
       <div class="popup" id="calculatorPopup">
       <h3>Select a Calculator</h3>
