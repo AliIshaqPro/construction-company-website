@@ -32,7 +32,7 @@
                     <a class="nav-link active" aria-current="page" href="/appointment">Book Appointment <i class="icofont-calendar" style="font-size: 24px;"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" onclick="openPopup(event)" aria-current="page" href="#">Materials Calculator <i class="icofont-ui-call" style="font-size: 24px;"></i></a>
+                    <a class="nav-link active" onclick="openPopup(event)" aria-current="page" href="#">Materials Calculator <i class="icofont-ui-calculator" style="font-size: 24px;"></i></a>
                 </li>
             </ul>
         </div>
@@ -50,6 +50,16 @@
             text-align: center; /* Center-align the items in collapsed mode */
         }
     }
+    .nav-link {
+    display: flex;
+    justify-content: space-between; /* Ensures that the text and icon are separated */
+    align-items: center; /* Vertically center the text and icon */
+}
+
+.nav-link i {
+    margin-left: auto; /* Pushes the icon to the extreme right */
+}
+
 </style>
 
       <div class="popup" id="calculatorPopup">
