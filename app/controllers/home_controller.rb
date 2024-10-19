@@ -6,6 +6,20 @@ class HomeController < ApplicationController
         @sliders = Slider.all
     end
 
+    def ourwork
+        @gallery = Gallery.new
+        @galleries = Gallery.all # Fetch all existing gallery entries
+      end
+    
+      def create_gallery
+        @gallery = Gallery.new(gallery_params)
+        
+        if @gallery.save
+          redirect_to ourwork_path, notice: 'Images uploaded successfully!'
+        else
+          render :ourwork
+        end
+      end
     def about
         @clients = Client.all  # Fetch all clients
         @projects = Project.all  # Fetch all projects
@@ -35,4 +49,9 @@ class HomeController < ApplicationController
     def servicedetails
         @faqs = Faq.all
     end
+    private
+
+  def gallery_params
+    params.require(:gallery).permit(images: [])
+  end
 end

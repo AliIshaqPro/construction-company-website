@@ -1,23 +1,25 @@
 <!-- Section for Contact Me -->
-      
-         <section class="call-action overlay" data-stellar-background-ratio="0.5">
-            <div class="container">
-               <div class="row">
-                  <div class="col-lg-12 col-md-12 col-12">
-                     <div class="content">
-                        <h2>Need Reliable Construction Services? Call Me at<br> +44 7539 367755</h2>
-                        <p>We provide quality construction services tailored to your needs. From residential to commercial projects, our experienced team is here to help you build your dreams.</p>
-                        <div class="button">
-                           <a href="/contact" class="btn">Get a Quote</a>
-                           <a href="/services-details" class="btn second">Learn More<i class="fa fa-long-arrow-right"></i></a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+<!-- Call to Action Section -->
+<section class="call-action bg-primary">
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-12">
+        <div class="content">
+            <h2>Need Reliable Construction Services? Call Me at<br> +44 7539 367755</h2>
+            <p>We provide quality construction services tailored to your needs. From residential to commercial projects, our experienced team is here to help you build your dreams.</p>
+            <div class="button">
+                <a href="/contact" class="btn">Get a Quote</a>
+                <a href="/services-details" class="btn second">Learn More<i class="fa fa-long-arrow-right"></i></a>
             </div>
-         </section>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+
+
          <section class="appointment">
-            <div class="container">
+            <div class="container" style="padding:30px;">
                <div class="row">
                   <div class="col-lg-12">
                      <div class="section-title">
@@ -28,7 +30,7 @@
                   </div>
                </div>
                <div class="row">
-                  <div class="col-lg-6 col-md-12 col-12">
+                  <div class=" col-lg-6 col-md-12 col-12">
                   <%= form_with(model: @consultation_request, local: true) do |form| %>
                      <div class="row">
                        <!-- Name Field -->
@@ -68,7 +70,8 @@
                        <div class="col-lg-6 col-md-6 col-12">
                          <div class="form-group">
                            <%= form.label :project_type, 'Project Type', class: 'form-label' %>
-                           <%= form.select :project_type, options_for_select([['Select Project Type', ''], ['Commercial', 'Commercial'], ['Residential', 'Residential'], ['Industrial', 'Industrial']]), class: 'form-control' %>
+                           <%= form.select :project_type, options_for_select([['Select Project Type', ''], ['Renovation', 'Renovation'], ['New Construction', 'New Construction'], ['Remodeling', 'Remodeling'], ['Demolition', 'Demolition'], ['Interior Design', 'Interior Design']]), class: 'form-control' %>
+
                            <% if @consultation_request.errors[:project_type].any? %>
                              <div class="text-danger"><%= @consultation_request.errors[:project_type].first %></div>
                            <% end %>
@@ -202,4 +205,4 @@
                </div>
             </div>
          </section>
-         <!-- End Blog Area -->
+         <!-- End Blog Area -->  
