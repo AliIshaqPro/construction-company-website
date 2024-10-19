@@ -8,7 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 Admin.find_or_create_by!(email: 'admin@qnq.com') do |admin|
-    admin.password = 'admin'          # Replace with a strong password
-    admin.password_confirmation = 'admin'
+    admin.password = 'admin@123'          # Replace with a strong password
+    admin.password_confirmation = 'admin@123'
   end
   
