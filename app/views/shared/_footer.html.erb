@@ -68,7 +68,44 @@
          </div>
       </div>
    </div>
-   <!--/ End Footer Top -->
+   
+   <!-- Google Map -->
+   <!-- Add Leaflet.js CSS and JavaScript -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Map Container -->
+<div id="map" style="width: 100%; height: 400px;"></div>
+
+<!-- Responsive styles -->
+<style>
+   @media (min-width: 768px) {
+      #map {
+         height: 400px;
+      }
+   }
+
+   @media (min-width: 1024px) {
+      #map {
+         height: 600px;
+      }
+   }
+</style>
+
+<script>
+   var map = L.map('map').setView([54.9783, -1.6174], 5); // Newcastle coordinates, adjust zoom for London visibility
+
+   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+   }).addTo(map);
+
+   // Adding markers for Newcastle and London
+   L.marker([54.9783, -1.6174]).addTo(map).bindPopup('Newcastle').openPopup();
+   L.marker([51.5074, -0.1278]).addTo(map).bindPopup('London');
+</script>
+
+   <!-- End Google Map -->
+   
    <!-- Copyright -->
    <div class="copyright">
       <div class="container">
@@ -83,3 +120,4 @@
    </div>
    <!--/ End Copyright -->
 </footer>
+
