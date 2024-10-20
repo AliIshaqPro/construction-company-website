@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tile Calculator</title>
     <style>
+@media (min-width: 992px) {
+.content-section{
+margin-top:93px;
+}
+}	</style>
+    <style>
       
 
         .calculator {
@@ -114,6 +120,7 @@
     </style>
 </head>
 <body>
+<div class="box" style="margin-top:150px;">
     <div class="calculator">
         <h2>Tile Calculator</h2>
 
@@ -161,7 +168,7 @@
             <button onclick="closePopup()">Close</button>
         </div>
     </div>
-
+</div>
     <script>
         function setTileDimensions() {
             const tilePreset = document.getElementById('tilePreset').value;

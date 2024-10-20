@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brick Calculator</title>
+    
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -95,7 +96,7 @@
     </style>
 </head>
 <body>
-
+<div class="box" style="margin-top:150px;">
 <div class="calculator">
     <h2>Brick Calculator</h2>
     <div class="input-group">
@@ -156,7 +157,7 @@
     <button class="close-popup" onclick="closePopup()">Close</button>
 </div>
 <div class="overlay" id="overlay"></div>
-
+</div>
 <script>
     function calculateBricks() {
         const length = parseFloat(document.getElementById('length').value);

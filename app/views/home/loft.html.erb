@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loft Insulation Calculator</title>
     <style>
+@media (min-width: 992px) {
+.content-section{
+margin-top:93px;
+}
+}	</style>
+    <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -91,7 +97,7 @@
     </style>
 </head>
 <body>
-
+<div class="box" style="margin-top:150px;">
 <div class="calculator">
     <h2>Loft Insulation Calculator</h2>
 
@@ -149,7 +155,7 @@
     <button class="close-popup" onclick="closePopup()">Close</button>
 </div>
 <div class="overlay" id="overlay"></div>
-
+</div>
 <script>
     function toggleCustomInput(field) {
         const selectElement = document.getElementById(field);

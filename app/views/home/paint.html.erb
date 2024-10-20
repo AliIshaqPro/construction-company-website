@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paint Calculator</title>
     <style>
+@media (min-width: 992px) {
+.content-section{
+margin-top:93px;
+}
+}	</style>
+    <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #eef2f7;
@@ -91,7 +97,7 @@
     </style>
 </head>
 <body>
-
+<div class="box" style="margin-top:150px;">
 <div class="calculator">
     <h2>Paint Calculator</h2>
     <div class="input-group">
@@ -145,7 +151,7 @@
     <button class="close-popup" onclick="closePopup()">Close</button>
 </div>
 <div class="overlay" id="overlay"></div>
-
+</div>
 <script>
 
 function calculatePaint() {

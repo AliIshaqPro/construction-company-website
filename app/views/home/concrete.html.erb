@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Concrete Calculator</title>
     <style>
+@media (min-width: 992px) {
+.content-section{
+margin-top:93px;
+}
+}	</style>
+    <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #e9ecef;
@@ -95,7 +101,7 @@
     </style>
 </head>
 <body>
-
+<div class="box" style="margin-top:150px;">
 <div class="calculator">
     <h2>Concrete Calculator</h2>
     <div class="input-group">
@@ -145,7 +151,7 @@
     <button class="close-popup" onclick="closePopup()">Close</button>
 </div>
 <div class="overlay" id="overlay"></div>
-
+</div>
 <script>
     function calculateMaterials() {
         const length = parseFloat(document.getElementById('length').value);
