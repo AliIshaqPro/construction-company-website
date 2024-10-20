@@ -5,6 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tile Calculator</title>
     <style>
+    body {
+    background-image: url('https://images.unsplash.com/photo-1518216049389-a6ce1f175e59?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover; /* Ensures the image covers the entire element */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 100vh; /* Full height of the viewport */
+    margin: 0; /* Removes default margin */
+}
+
+    .home-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: bold;
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    border-radius: 20px;
+    color: white;
+    margin-bottom: 20px; /* Adds space below the Home link */
+}
+
+.link-container {
+    display: flex;
+    justify-content: space-between; /* Space between links */
+    flex-wrap: wrap; /* Allows wrapping to new lines on smaller screens */
+}
+
+.link-item {
+    flex: 1; /* Each link takes equal space */
+    text-align: center;
+    margin: 5px; /* Space around links */
+    padding: 10px; /* Padding inside links */
+    background-color: black; /* Link background color */
+    color: black; /* Link text color */
+    border-radius: 10px; /* Rounded corners */
+    text-decoration: none; /* No underline */
+    transition: background-color 0.3s; /* Smooth background change */
+}
+
+.link-item:hover {
+    background-color: gray; /* Change background on hover */
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .link-item {
+        flex: 1 1 45%; /* Two links per row on medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .link-item {
+        flex: 1 1 100%; /* Full width for each link on small screens */
+    }
+}
+
         @media (min-width: 992px) {
             .content-section {
                 margin-top: 93px;
@@ -106,29 +164,105 @@
         #popup button:hover {
             background-color: #218838;
         }
+        .home-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: bold;
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    border-radius: 20px;
+    color: white;
+    margin-bottom: 20px; /* Adds space below the Home link */
+}
+
+.link-container {
+    display: flex;
+    justify-content: space-between; /* Space between links */
+    flex-wrap: wrap; /* Allows wrapping to new lines on smaller screens */
+}
+
+.link-item {
+    flex: 1; /* Each link takes equal space */
+    text-align: center;
+    margin: 5px; /* Space around links */
+    padding: 10px; /* Padding inside links */
+    background-color: black; /* Link background color */
+    color: white; /* Link text color */
+    border-radius: 10px; /* Rounded corners */
+    text-decoration: none; /* No underline */
+    transition: background-color 0.3s; /* Smooth background change */
+}
+
+.link-item:hover {
+    background-color: gray; /* Change background on hover */
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .link-item {
+        flex: 1 1 45%; /* Two links per row on medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .link-item {
+        flex: 1 1 100%; /* Full width for each link on small screens */
+    }
+}
+
     </style>
 </head>
 <body>
+<% content_for :show_navbar do %>
+    <!-- Skip the navbar -->
+<% end %>
+<a href="/" class="home-link">
+    <span>Home</span>
+</a>
+
+<div class="link-container">
+    
+    <a href="/concrete-calculator" class="link-item">Concrete Calculator</a>
+    <a href="/bricks-calculator" class="link-item">Bricks Calculator</a>
+    <a href="/paint-calculator" class="link-item">Paint Calculator</a>
+    <a href="/hardcore-calculator" class="link-item">Hardcore Calculator</a>
+    <a href="/loft-insulation-calculator" class="link-item">Loft Insulation</a>
+</div>
+
 <div class="box" style="margin-top:180px;">
     <div class="calculator">
-        <h2>Tile Calculator</h2>
+        <h2>Tile Area Calculator</h2>
 
-        <!-- Room Dimensions -->
-        <label for="length">Length (metres):</label>
-        <input type="number" id="length" value="1" step="0.01">
-
-        <label for="width">Width (metres):</label>
-        <input type="number" id="width" value="1" step="0.01">
-
-        <label for="height">Height (metres):</label>
+        <!-- Wall Dimensions -->
+        <h3>Wall Dimensions</h3>
+        <label for="height">Wall Height (metres):</label>
         <input type="number" id="height" value="1" step="0.01">
 
-        <!-- Waste Percentage -->
-        <label for="waste">Waste (%):</label>
-        <input type="number" id="waste" value="1" step="0.01">
+        <label for="width1">Wall 1 Width (metres):</label>
+        <input type="number" id="width1" value="1" step="0.01">
+
+        <label for="width2">Wall 2 Width (metres):</label>
+        <input type="number" id="width2" value="1" step="0.01">
+
+        <label for="width3">Wall 3 Width (metres):</label>
+        <input type="number" id="width3" value="1" step="0.01">
+
+        <label for="width4">Wall 4 Width (metres):</label>
+        <input type="number" id="width4" value="1" step="0.01">
+
+        <!-- Floor Dimensions -->
+        <h3>Floor Dimensions</h3>
+        <label for="floor-length">Floor Length (metres):</label>
+        <input type="number" id="floor-length" value="1" step="0.01">
+
+        <label for="floor-width">Floor Width (metres):</label>
+        <input type="number" id="floor-width" value="1" step="0.01">
 
         <!-- Calculate Button -->
-        <button onclick="calculateTiles()">Calculate</button>
+        <button onclick="calculateArea()">Calculate</button>
     </div>
 
     <!-- Popup -->
@@ -139,21 +273,33 @@
         </div>
     </div>
 </div>
+
 <script>
-    function calculateTiles() {
-        const length = parseFloat(document.getElementById('length').value);
-        const width = parseFloat(document.getElementById('width').value);
+    function calculateArea() {
         const height = parseFloat(document.getElementById('height').value);
-        const waste = parseFloat(document.getElementById('waste').value) / 100;
+        const width1 = parseFloat(document.getElementById('width1').value);
+        const width2 = parseFloat(document.getElementById('width2').value);
+        const width3 = parseFloat(document.getElementById('width3').value);
+        const width4 = parseFloat(document.getElementById('width4').value);
+        const floorLength = parseFloat(document.getElementById('floor-length').value);
+        const floorWidth = parseFloat(document.getElementById('floor-width').value);
 
-        if (length && width && height !== 0) {
-            const roomArea = length * width * height; // Assuming height is for a wall area
-            const numberOfTiles = Math.ceil(roomArea * (1 + waste));
-
-            showPopup(`You need approximately ${numberOfTiles} tiles.`);
-        } else {
-            showPopup('Please enter valid values.');
+        // Error handling for empty or invalid inputs
+        if (isNaN(height) || isNaN(width1) || isNaN(width2) || isNaN(width3) || isNaN(width4) || isNaN(floorLength) || isNaN(floorWidth)) {
+            showPopup('Please enter valid dimensions for all fields.');
+            return;
         }
+
+        // Calculate total wall area by summing the areas of all four walls
+        const wallArea = (height * width1) + (height * width2) + (height * width3) + (height * width4);
+
+        // Calculate floor area
+        const floorArea = floorLength * floorWidth;
+
+        // Total area
+        const totalArea = wallArea + floorArea;
+
+        showPopup(`Total area to cover is approximately ${totalArea.toFixed(2)} square meters.`);
     }
 
     function showPopup(message) {
@@ -165,5 +311,7 @@
         document.getElementById('popup').style.display = 'none';
     }
 </script>
+
+
 </body>
 </html>

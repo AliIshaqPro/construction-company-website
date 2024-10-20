@@ -92,9 +92,82 @@
             z-index: 9998;
             display: none;
         }
+        .home-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-weight: bold;
+            height: 50px;
+            width: 100%;
+            background-color: black;
+            border-radius: 20px;
+            color: white;
+            margin-bottom: 20px; /* Adds space below the Home link */
+        }
+        
+        .link-container {
+            display: flex;
+            justify-content: space-between; /* Space between links */
+            flex-wrap: wrap; /* Allows wrapping to new lines on smaller screens */
+        }
+        
+        .link-item {
+            flex: 1; /* Each link takes equal space */
+            text-align: center;
+            margin: 5px; /* Space around links */
+            padding: 10px; /* Padding inside links */
+            background-color: black; /* Link background color */
+            color: white; /* Link text color */
+            border-radius: 10px; /* Rounded corners */
+            text-decoration: none; /* No underline */
+            transition: background-color 0.3s; /* Smooth background change */
+        }
+        
+        .link-item:hover {
+            background-color: gray; /* Change background on hover */
+        }
+        
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            .link-item {
+                flex: 1 1 45%; /* Two links per row on medium screens */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .link-item {
+                flex: 1 1 100%; /* Full width for each link on small screens */
+            }
+        }
+        body {
+            background-image: url('https://images.unsplash.com/photo-1518216049389-a6ce1f175e59?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover; /* Ensures the image covers the entire element */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            height: 100vh; /* Full height of the viewport */
+            margin: 0; /* Removes default margin */
+        }
     </style>
 </head>
 <body>
+<% content_for :show_navbar do %>
+    <!-- Skip the navbar -->
+  <% end %>
+<a href="/" class="home-link">
+    <span>Home</span>
+</a>
+
+<div class="link-container">
+    <a href="/tiles-calculator" class="link-item">Tiles Calculator</a>
+    
+    <a href="/bricks-calculator" class="link-item">Bricks Calculator</a>
+    <a href="/paint-calculator" class="link-item">Paint Calculator</a>
+    <a href="/hardcore-calculator" class="link-item">Hardcore Calculator</a>
+    <a href="/loft-insulation-calculator" class="link-item">Loft Insulation</a>
+</div>
+
+
 <div class="box" style="margin-top: 150px;margin-bottom:20px;">
 <div class="calculator">
     <h2>Concrete Calculator</h2>
