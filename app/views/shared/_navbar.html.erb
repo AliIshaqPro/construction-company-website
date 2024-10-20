@@ -46,6 +46,7 @@
    .custom-logo {
             flex-shrink: 0;
             width: 200px;
+            background-color: rgba(0, 100, 0, 0.9); /* Dark green */
         }
 
 /* Container for the nav items */
@@ -133,14 +134,36 @@
     list-style: none;
     border: 1px solid #ccc;
     z-index: 100;
-    width: 300px;
+    width: 250px;
+    max-height: 200px; /* Set a maximum height */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds max-height */
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
     border-radius: 10px;
     transition: transform 1s ease, opacity 1.5s ease; /* Smooth transition for dropdown */
     transform: translateY(-20px); /* Initially above the view */
     opacity: 0; /* Initially hidden */
+    left: -75px; /* Move dropdown 10px to the left */
 }
+
+
+/* Show the dropdown with animation when active */
+.dropdown.active .dropdown-menu {
+    display: block;
+    transform: translateY(0);
+    opacity: 1;
+    animation: dropdownSlide 1.5s ease forwards;
+}
+
+/* Prevent dropdown from overflowing screen */
+.dropdown-menu {
+    max-width: 90vw; /* Ensure the dropdown doesn't exceed viewport width */
+    max-height: 90vh; /* Prevent height overflow */
+    overflow-y: auto; /* Add vertical scroll if content exceeds height */
+}
+
+/* Other styles remain the same */
+
 
 /* Dropdown styling */
 .dropdown-menu li {
