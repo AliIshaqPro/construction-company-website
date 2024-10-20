@@ -6,56 +6,57 @@
     <title>Q&Q Builders LTD</title>
     <style>
     /* Base styles for the navbar */
-    .custom-navbar {
-        position: fixed; /* Make navbar fixed */
-        top: 0; /* Stick to the top */
-        width: 100%;
-        height: 70px; /* Default height */
-        background-color: rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(5px);
-        display: flex;
-        justify-content: space-between; /* Spread logo and nav items */
-        align-items: center; /* Vertically align items */
-        color: white;
-        z-index: 999; /* Ensure it's on top of other elements */
-        border-top: 2px solid #2C2D3F; /* Border at the top */
-        padding: 10px 20px; /* Padding for better spacing */
-        transition: height 0.3s ease;
-    }
+        .custom-navbar {
+            position: fixed; 
+            top: 0; 
+            width: 100%;
+            height: 70px; 
+            background-color: rgba(100, 150, 255, 0.5);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            z-index: 999;
+            border-top: 2px solid #2C2D3F;
+            padding: 10px 20px; 
+            transition: height 0.3s ease;
+        }
     
-    /* Style for navbar links */
-    .custom-navbar a {
-        color: #2C2D3F;
-        text-decoration: none;
-        font-size: 1.2vw;
-        padding: 10px; /* Adjust padding for better touch targets */
-        border: 2px solid transparent;
-        transition: all 0.3s ease;
-        border-radius: 40px;
-        background-color: rgba(255, 255, 255, 0.6);
-    }
+      /* Style for navbar links */
+        .custom-navbar a {
+            color: #2C2D3F;
+            text-decoration: none;
+            font-size: 1.2vw;
+            padding: 10px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            border-radius: 40px;
+            background-color: rgba(255, 255, 255, 0.6);
+        }
     
-    /* Hover effect */
-    .custom-navbar a:hover {
-        border-color: white;
-        background-color: rgba(255, 255, 255, 0.4);
-        color: white;
-        transform: scale(1.1);
-    }
-/* Logo styles */
-.custom-logo {
-    flex-shrink: 0; /* Prevent shrinking */
-    width: 200px; /* Fixed width for logo */
-}
+     /* Hover effect */
+        .custom-navbar a:hover {
+            border-color: white;
+            background-color: rgba(255, 255, 255, 0.4);
+            color: white;
+            transform: scale(1.1);
+        }
+
+   .custom-logo {
+            flex-shrink: 0;
+            width: 200px;
+        }
 
 /* Container for the nav items */
 .nav-items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1; /* Nav items take up remaining space */
-    gap: 20px; /* Spacing between nav items */
-}
+            display: flex;
+            font-weight: bold;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            gap: 20px;
+        }
 
 /* Layout adjustment for larger screens */
 @media (min-width: 992px) {
@@ -124,32 +125,70 @@
         font-size: 0.5vw; /* Adjust font size for tablets */
     }
 }
-
 /* Hide dropdown menu by default */
 .dropdown-menu {
     display: none;
     position: absolute;
-    background-color: white;
+    background-color: #1a76d1; /* Set background color to orange */
     list-style: none;
     border: 1px solid #ccc;
     z-index: 100;
     width: 300px;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-menu {
-    display: block;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+    border-radius: 10px;
+    transition: transform 1s ease, opacity 1.5s ease; /* Smooth transition for dropdown */
+    transform: translateY(-20px); /* Initially above the view */
+    opacity: 0; /* Initially hidden */
 }
 
 /* Dropdown styling */
 .dropdown-menu li {
-    padding: 5px 0;
+    padding: 10px 0;
+    transition: transform 0.3s ease-in-out; /* Smooth effect on hover */
 }
 
 /* Adjust link style within the dropdown */
 .dropdown-menu li a {
     text-decoration: none;
-    color: #000;
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    display: block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for dropdown items */
+.dropdown-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+/* Show the dropdown with animation when active */
+.dropdown.active .dropdown-menu {
+    display: block;
+    transform: translateY(0); /* Slide it down smoothly */
+    opacity: 1; /* Make it visible */
+}
+
+/* Animation for dropdown appearance */
+@keyframes dropdownSlide {
+    from {
+        transform: translateY(-20px); /* Start above the view */
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        transform: translateY(0); /* Slide into view */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+/* Apply the animation to the dropdown when active */
+.dropdown.active .dropdown-menu {
+    animation: dropdownSlide 1.5s ease forwards;
 }
 
 
@@ -157,46 +196,72 @@
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg custom-navbar">
-    <!-- Logo -->
-    <div class="custom-logo" style="display:flex; border-radius:40px;">
-        <a href="/">
-            <%= image_tag 'logo2.png', class: 'img-fluid custom-logo-img', style: 'height:100px;width:300px;' %>
-        </a>
-    </div>
-
-    <!-- Navigation Items -->
-    <div class="nav-items">
-        
-        <a href="#about">About</a>
-        <div class="dropdown">
-            <a href="#" class="dropdown-toggle">Projects</a>
-            <ul class="dropdown-menu">
-                <li><a href="#projects">On-Going Projects</a></li>
-                <li><a href="#projects">Finished Projects</a></li>
-            </ul>
-        </div>
-        <a href="#services">Services</a>
-
-        <!-- Dropdown for Calculator -->
-        <div class="dropdown">
-            <a href="#" class="dropdown-toggle">Calculator</a>
-            <ul class="dropdown-menu">
-                <li><a href="/tiles-calculator">Tiles Calculator</a></li>
-                <li><a href="/concrete-calculator">Concrete Calculator</a></li>
-                <li><a href="/bricks-calculator">Bricks Calculator</a></li>
-                <li><a href="/paint-calculator">Paint Calculator</a></li>
-                <li><a href="/hardcore-calculator">Hardcore Calculator</a></li>
-                <li><a href="/loft-insulation-calculator">Loft Insulation</a></li>
-            </ul>
+<nav class="navbar navbar-expand-lg custom-navbar">
+        <!-- Logo -->
+        <div class="custom-logo" style="display:flex; border-radius:40px;">
+            <a href="/">
+                <%= image_tag 'logo2.png', class: 'img-fluid custom-logo-img', style: 'height:100px;width:300px;' %>
+            </a>
         </div>
 
-        <a href="#contact">Contact</a>
-    </div>
-</nav>
+        <!-- Navigation Items -->
+        <div class="nav-items">
+            <a href="#about" style="font-weight: bold;">About</a>
+            
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle" style="font-weight: bold;">Projects</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#projects">On-Going Projects</a></li>
+                    <li><a href="#projects">Finished Projects</a></li>
+                </ul>
+            </div>
+            
+            <a href="#services" style="font-weight: bold;">Services</a>
+            
+            <!-- Dropdown for Calculator -->
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle" style="font-weight: bold;">Calculator</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/tiles-calculator">Tiles Calculator</a></li>
+                    <li><a href="/concrete-calculator">Concrete Calculator</a></li>
+                    <li><a href="/bricks-calculator">Bricks Calculator</a></li>
+                    <li><a href="/paint-calculator">Paint Calculator</a></li>
+                    <li><a href="/hardcore-calculator">Hardcore Calculator</a></li>
+                    <li><a href="/loft-insulation-calculator">Loft Insulation</a></li>
+                </ul>
+            </div>
+            
+            <a href="#contact" style="font-weight: bold;">Contact</a>
+        </div>
+
+    </nav>
     <!-- JavaScript for Scroll and Popup -->
     <script>
+
+     // Toggle dropdown visibility
+        document.querySelectorAll('.dropdown-toggle').forEach(function (toggle) {
+            toggle.addEventListener('click', function (event) {
+                event.preventDefault();
+                // Close other open dropdowns
+                document.querySelectorAll('.dropdown').forEach(function (dropdown) {
+                    if (dropdown !== toggle.parentElement) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+                // Toggle the clicked dropdown
+                toggle.parentElement.classList.toggle('active');
+            });
+        });
+
+        // Hide dropdown when clicking outside
+        window.addEventListener('click', function (event) {
+            if (!event.target.matches('.dropdown-toggle')) {
+                document.querySelectorAll('.dropdown').forEach(function (dropdown) {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+
         window.onscroll = function() { updateProgressBar() };
 
         function updateProgressBar() {
