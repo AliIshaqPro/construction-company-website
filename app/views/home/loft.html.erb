@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loft Insulation Calculator</title>
     <style>
-@media (min-width: 992px) {
-.content-section{
-margin-top:93px;
-}
-}	</style>
-    <style>
+        @media (min-width: 992px) {
+            .content-section {
+                margin-top: 93px;
+            }
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -18,7 +17,7 @@ margin-top:93px;
         }
         .calculator {
             width: 100%;
-            max-width: 400px;
+            
             margin: 0 auto;
             padding: 20px;
             background-color: #fff;
@@ -97,81 +96,47 @@ margin-top:93px;
     </style>
 </head>
 <body>
-<div class="box" style="margin-top:150px;">
-<div class="calculator">
-    <h2>Loft Insulation Calculator</h2>
+<div class="box" style="margin-top: 150px;margin-bottom:20px;">
+    <div class="calculator">
+        <h2>Loft Insulation Calculator</h2>
 
-    <div class="input-group">
-        <label for="width">Width (metres):</label>
-        <select id="width" onchange="toggleCustomInput('width')">
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="custom">Custom</option>
-        </select>
-        <input type="number" id="customWidth" placeholder="Enter custom width" style="display:none;">
+        <div class="input-group">
+            <label for="width">Width (metres):</label>
+            <input type="number" id="width" placeholder="Enter width in metres" required>
+        </div>
+
+        <div class="input-group">
+            <label for="height">Height (metres):</label>
+            <input type="number" id="height" placeholder="Enter height in metres" required>
+        </div>
+
+        <div class="input-group">
+            <label for="length">Roll Length (mm):</label>
+            <input type="number" id="length" placeholder="Enter roll length in mm" required>
+        </div>
+
+        <div class="input-group">
+            <label for="rollWidth">Roll Width (mm):</label>
+            <input type="number" id="rollWidth" placeholder="Enter roll width in mm" required>
+        </div>
+
+        <button class="calculate-btn" onclick="calculateInsulation()">Calculate</button>
+        <div id="error-message" class="error"></div>
     </div>
 
-    <div class="input-group">
-        <label for="height">Height (metres):</label>
-        <select id="height" onchange="toggleCustomInput('height')">
-            <option value="2.5">2.5</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="custom">Custom</option>
-        </select>
-        <input type="number" id="customHeight" placeholder="Enter custom height" style="display:none;">
+    <div class="popup" id="resultPopup" role="dialog" aria-labelledby="popupTitle" aria-hidden="true">
+        <h3 id="popupTitle">Result</h3>
+        <p id="resultText"></p>
+        <button class="close-popup" onclick="closePopup()">Close</button>
     </div>
-
-    <div class="input-group">
-        <label for="length">Roll Length (mm):</label>
-        <select id="length" onchange="toggleCustomInput('length')">
-            <option value="4000">4000 mm</option>
-            <option value="6000">6000 mm</option>
-            <option value="8000">8000 mm</option>
-            <option value="custom">Custom</option>
-        </select>
-        <input type="number" id="customLength" placeholder="Enter custom length (mm)" style="display:none;">
-    </div>
-
-    <div class="input-group">
-        <label for="rollWidth">Roll Width (mm):</label>
-        <select id="rollWidth" onchange="toggleCustomInput('rollWidth')">
-            <option value="400">400 mm</option>
-            <option value="600">600 mm</option>
-            <option value="800">800 mm</option>
-            <option value="custom">Custom</option>
-        </select>
-        <input type="number" id="customRollWidth" placeholder="Enter custom width (mm)" style="display:none;">
-    </div>
-
-    <button class="calculate-btn" onclick="calculateInsulation()">Calculate</button>
-    <div id="error-message" class="error"></div>
-</div>
-
-<div class="popup" id="resultPopup" role="dialog" aria-labelledby="popupTitle" aria-hidden="true">
-    <h3 id="popupTitle">Result</h3>
-    <p id="resultText"></p>
-    <button class="close-popup" onclick="closePopup()">Close</button>
-</div>
-<div class="overlay" id="overlay"></div>
+    <div class="overlay" id="overlay"></div>
 </div>
 <script>
-    function toggleCustomInput(field) {
-        const selectElement = document.getElementById(field);
-        const customInput = document.getElementById('custom' + field.charAt(0).toUpperCase() + field.slice(1));
-        if (selectElement.value === 'custom') {
-            customInput.style.display = 'block';
-        } else {
-            customInput.style.display = 'none';
-        }
-    }
-
     function calculateInsulation() {
-        const width = getFinalValue('width');
-        const height = getFinalValue('height');
-        const rollLength = getFinalValue('length') / 1000; // convert mm to metres
-        const rollWidth = getFinalValue('rollWidth') / 1000; // convert mm to metres
+        const width = parseFloat(document.getElementById('width').value);
+        const height = parseFloat(document.getElementById('height').value);
+        const rollLength = parseFloat(document.getElementById('length').value) / 1000; // convert mm to metres
+        const rollWidth = parseFloat(document.getElementById('rollWidth').value) / 1000; // convert mm to metres
         const errorMessage = document.getElementById('error-message');
 
         // Reset error message
@@ -199,12 +164,6 @@ margin-top:93px;
         openPopup();
     }
 
-    function getFinalValue(field) {
-        const selectElement = document.getElementById(field);
-        const customInput = document.getElementById('custom' + field.charAt(0).toUpperCase() + field.slice(1));
-        return selectElement.value === 'custom' ? parseFloat(customInput.value) : parseFloat(selectElement.value);
-    }
-
     function openPopup() {
         document.getElementById('resultPopup').style.display = 'block';
         document.getElementById('overlay').style.display = 'block';
@@ -217,6 +176,5 @@ margin-top:93px;
         document.getElementById('resultPopup').setAttribute("aria-hidden", "true");
     }
 </script>
-
 </body>
 </html>

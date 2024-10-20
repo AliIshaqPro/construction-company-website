@@ -5,12 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Concrete Calculator</title>
     <style>
-@media (min-width: 992px) {
-.content-section{
-margin-top:93px;
-}
-}	</style>
-    <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #e9ecef;
@@ -18,7 +12,7 @@ margin-top:93px;
         }
         .calculator {
             width: 100%;
-            max-width: 500px;
+            
             margin: 0 auto;
             padding: 20px;
             background-color: #fff;
@@ -37,7 +31,7 @@ margin-top:93px;
             margin-bottom: 8px;
             font-weight: 600;
         }
-        .input-group input, .input-group select {
+        .input-group input {
             width: 100%;
             padding: 10px;
             font-size: 16px;
@@ -48,7 +42,7 @@ margin-top:93px;
         .calculate-btn {
             width: 100%;
             padding: 15px;
-            background-color: #28a745;
+            background-color: #007bff;
             color: white;
             border: none;
             cursor: pointer;
@@ -101,45 +95,20 @@ margin-top:93px;
     </style>
 </head>
 <body>
-<div class="box" style="margin-top:150px;">
+<div class="box" style="margin-top: 150px;margin-bottom:20px;">
 <div class="calculator">
     <h2>Concrete Calculator</h2>
     <div class="input-group">
         <label for="length">Length (metres):</label>
-        <select id="length">
-            <option value="" disabled selected>Select length</option>
-            <option value="1">1 m</option>
-            <option value="2">2 m</option>
-            <option value="3">3 m</option>
-            <option value="4">4 m</option>
-            <option value="5">5 m</option>
-            <option value="6">6 m</option>
-            <option value="8">8 m</option>
-            <option value="10">10 m</option>
-        </select>
+        <input type="number" id="length" step="0.01" placeholder="Enter length in meters" required>
     </div>
     <div class="input-group">
         <label for="width">Width (metres):</label>
-        <select id="width">
-            <option value="" disabled selected>Select width</option>
-            <option value="1">1 m</option>
-            <option value="1.5">1.5 m</option>
-            <option value="2">2 m</option>
-            <option value="2.5">2.5 m</option>
-            <option value="3">3 m</option>
-            <option value="4">4 m</option>
-        </select>
+        <input type="number" id="width" step="0.01" placeholder="Enter width in meters" required>
     </div>
     <div class="input-group">
         <label for="depth">Depth (mm):</label>
-        <select id="depth">
-            <option value="" disabled selected>Select depth</option>
-            <option value="100">100 mm</option>
-            <option value="150">150 mm</option>
-            <option value="200">200 mm</option>
-            <option value="250">250 mm</option>
-            <option value="300">300 mm</option>
-        </select>
+        <input type="number" id="depth" step="1" placeholder="Enter depth in mm" required>
     </div>
     <button class="calculate-btn" onclick="calculateMaterials()">Calculate</button>
 </div>
@@ -159,7 +128,7 @@ margin-top:93px;
         const depth = parseFloat(document.getElementById('depth').value) / 1000; // Convert mm to metres
 
         if (isNaN(length) || isNaN(width) || isNaN(depth) || length <= 0 || width <= 0 || depth <= 0) {
-            alert('Please select valid dimensions');
+            alert('Please enter valid dimensions');
             return;
         }
 

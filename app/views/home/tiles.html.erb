@@ -5,35 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tile Calculator</title>
     <style>
-@media (min-width: 992px) {
-.content-section{
-margin-top:93px;
-}
-}	</style>
-    <style>
-      
+        @media (min-width: 992px) {
+            .content-section {
+                margin-top: 93px;
+            }
+        }
 
         .calculator {
-            
             background-color: #ffffff;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
             width: 100%;
-            
         }
 
         h2 {
             font-size: 1.8rem;
             margin-bottom: 15px;
             color: #333;
-            text-align: center;
-        }
-
-        h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #555;
             text-align: center;
         }
 
@@ -44,7 +33,7 @@ margin-top:93px;
             display: block;
         }
 
-        input, select {
+        input {
             width: 100%;
             padding: 10px;
             margin-top: 5px;
@@ -54,7 +43,7 @@ margin-top:93px;
             margin-bottom: 15px;
         }
 
-        input:focus, select:focus {
+        input:focus {
             border-color: #007bff;
             outline: none;
             box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.2);
@@ -120,7 +109,7 @@ margin-top:93px;
     </style>
 </head>
 <body>
-<div class="box" style="margin-top:150px;">
+<div class="box" style="margin-top:180px;">
     <div class="calculator">
         <h2>Tile Calculator</h2>
 
@@ -128,34 +117,15 @@ margin-top:93px;
         <label for="length">Length (metres):</label>
         <input type="number" id="length" value="1" step="0.01">
 
-        <label for="width">Height or Width (metres):</label>
+        <label for="width">Width (metres):</label>
         <input type="number" id="width" value="1" step="0.01">
 
-        <!-- Tile Preset -->
-        <h3>Tiles</h3>
-        <label for="tilePreset">Tile Preset:</label>
-        <select id="tilePreset" onchange="setTileDimensions()">
-            <option value="100x100">100 x 100 mm</option>
-            <option value="200x200">200 x 200 mm</option>
-            <option value="300x300">300 x 300 mm</option>
-            <option value="custom">Custom</option>
-        </select>
-
-        <!-- Tile Dimensions -->
-        <label for="tileLength">Tile Length (mm):</label>
-        <input type="number" id="tileLength" value="100">
-
-        <label for="tileWidth">Tile Width (mm):</label>
-        <input type="number" id="tileWidth" value="100">
-
-        <!-- Doors/Windows Aperture -->
-        <h3>Doors/Windows Aperture</h3>
-        <label for="apertureArea">Aperture Area (sq m):</label>
-        <input type="number" id="apertureArea" value="0" step="0.01">
+        <label for="height">Height (metres):</label>
+        <input type="number" id="height" value="1" step="0.01">
 
         <!-- Waste Percentage -->
         <label for="waste">Waste (%):</label>
-        <input type="number" id="waste" value="1">
+        <input type="number" id="waste" value="1" step="0.01">
 
         <!-- Calculate Button -->
         <button onclick="calculateTiles()">Calculate</button>
@@ -169,48 +139,31 @@ margin-top:93px;
         </div>
     </div>
 </div>
-    <script>
-        function setTileDimensions() {
-            const tilePreset = document.getElementById('tilePreset').value;
-            if (tilePreset !== "custom") {
-                const dimensions = tilePreset.split('x');
-                document.getElementById('tileLength').value = dimensions[0];
-                document.getElementById('tileWidth').value = dimensions[1];
-                document.getElementById('tileLength').disabled = true;
-                document.getElementById('tileWidth').disabled = true;
-            } else {
-                document.getElementById('tileLength').disabled = false;
-                document.getElementById('tileWidth').disabled = false;
-            }
+<script>
+    function calculateTiles() {
+        const length = parseFloat(document.getElementById('length').value);
+        const width = parseFloat(document.getElementById('width').value);
+        const height = parseFloat(document.getElementById('height').value);
+        const waste = parseFloat(document.getElementById('waste').value) / 100;
+
+        if (length && width && height !== 0) {
+            const roomArea = length * width * height; // Assuming height is for a wall area
+            const numberOfTiles = Math.ceil(roomArea * (1 + waste));
+
+            showPopup(`You need approximately ${numberOfTiles} tiles.`);
+        } else {
+            showPopup('Please enter valid values.');
         }
+    }
 
-        function calculateTiles() {
-            const length = parseFloat(document.getElementById('length').value);
-            const width = parseFloat(document.getElementById('width').value);
-            const tileLength = parseFloat(document.getElementById('tileLength').value) / 1000; // Convert to meters
-            const tileWidth = parseFloat(document.getElementById('tileWidth').value) / 1000; // Convert to meters
-            const apertureArea = parseFloat(document.getElementById('apertureArea').value);
-            const waste = parseFloat(document.getElementById('waste').value) / 100;
+    function showPopup(message) {
+        document.getElementById('popup-result').innerText = message;
+        document.getElementById('popup').style.display = 'flex';
+    }
 
-            if (length && width && tileLength && tileWidth !== 0) {
-                const roomArea = length * width - apertureArea;
-                const tileArea = tileLength * tileWidth;
-                const numberOfTiles = Math.ceil((roomArea / tileArea) * (1 + waste));
-
-                showPopup(`You need approximately ${numberOfTiles} tiles.`);
-            } else {
-                showPopup('Please enter valid values.');
-            }
-        }
-
-        function showPopup(message) {
-            document.getElementById('popup-result').innerText = message;
-            document.getElementById('popup').style.display = 'flex';
-        }
-
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-        }
-    </script>
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+</script>
 </body>
 </html>

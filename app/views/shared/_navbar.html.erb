@@ -34,7 +34,7 @@
         border-radius: 40px;
         background-color: rgba(255, 255, 255, 0.6);
     }
- 
+    
     /* Hover effect */
     .custom-navbar a:hover {
         border-color: white;
@@ -42,135 +42,159 @@
         color: white;
         transform: scale(1.1);
     }
+/* Logo styles */
+.custom-logo {
+    flex-shrink: 0; /* Prevent shrinking */
+    width: 200px; /* Fixed width for logo */
+}
 
-    /* Logo styles */
+/* Container for the nav items */
+.nav-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Nav items take up remaining space */
+    gap: 20px; /* Spacing between nav items */
+}
+
+/* Layout adjustment for larger screens */
+@media (min-width: 992px) {
+    .custom-navbar {
+        height: 130px;
+        padding: 0 50px;
+    }
+
     .custom-logo {
-        flex-shrink: 0; /* Prevent shrinking */
-        width: 200px; /* Fixed width for logo */
+        width: 250px; /* Increase logo size for larger screens */
     }
 
-    .custom-logo-img {
-        width: 100%; /* Make logo responsive */
-        height: auto; /* Maintain aspect ratio */
+    .nav-items a {
+        font-size: 1.2vw; /* Adjust font size for larger screens */
+    }
+}
+
+/* Adjust layout for smaller screens */
+@media (max-width: 768px) {
+    .custom-navbar {
+        height: auto; /* Auto height for smaller screens */
+        flex-direction: column; /* Stack items vertically */
+        padding: 10px;
     }
 
-    /* Container for the nav items */
+    .custom-logo {
+        margin-bottom: 5px;
+        width: 300px; /* Reduce logo size on mobile screens */
+    }
+
     .nav-items {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-grow: 1; /* Nav items take up remaining space */
-        gap: 20px; /* Spacing between nav items */
+        flex-direction: row; /* Keep nav items in a horizontal row */
+        font-size: 2.5vw; /* Adjust size for small screens */
+        justify-content: center; /* Center the nav items */
+        gap: 10px; /* Space between nav items */
     }
 
-    /* Layout adjustment for larger screens */
-    @media (min-width: 992px) {
-    .home-section{
-    margin-top75px;
+    .custom-navbar a {
+        font-size: 3.5vw; /* Increase font size for smaller screens */
+        padding: 8px; /* Adjust padding for touch targets */
+        min-height: 40px; /* Maintain a minimum height for nav items */
+        display: flex; /* Use flex for vertical alignment */
+        align-items: center; /* Center items vertically */
     }
-        .custom-navbar {
-            height: 120px;
-            padding: 0 50px;
-        }
+}
 
-        .custom-logo {
-            width: 250px; /* Increase logo size for larger screens */
-        }
-
-        .nav-items a {
-            font-size: 1.2vw; /* Adjust font size for larger screens */
-        }
+/* Additional media queries for even smaller screens */
+@media (max-width: 480px) {
+    .custom-navbar a {
+        font-size: 3vw; /* Adjust font size for smaller screens */
+        padding: 5px; /* Reduce padding */
     }
 
-    /* Adjust layout for smaller screens */
-    @media (max-width: 768px) {
-        .custom-navbar {
-            height: auto;
-            flex-direction: column;
-            padding: 20px;
-        }
+    .nav-items {
+        gap: 5px; /* Slightly reduce gap */
+    }
+}
 
-        .custom-logo {
-            margin-bottom: 10px;
-            width: 160px; /* Reduce logo size on mobile screens */
-        }
-
-        .nav-items {
-            flex-direction: row; /* Keep nav items in a horizontal row */
-            font-size: 3.5vw; /* Adjust size for small screens */
-            justify-content: center; /* Center the nav items */
-            gap: 1px; /* Space between nav items */
-        }
-
-        .custom-navbar a {
-            font-size: 4vw; /* Increase font size for smaller screens */
-            padding: 8px; /* Adjust padding for touch targets */
-        }
+/* Fine-tune layout for tablet-sized screens */
+@media (min-width: 768px) and (max-width: 992px) {
+    .custom-logo {
+        width: 180px; /* Adjust logo size for tablets */
     }
 
-    /* Additional media queries for even smaller screens */
-    @media (max-width: 480px) {
-        .custom-logo {
-            width: 140px; /* Further reduce logo size on small devices */
-        }
-
-        .custom-navbar a {
-            font-size: 3vw; /* Adjust font size for smaller screens */
-            padding: 5px; /* Reduce padding */
-        }
-
-        .nav-items {
-            gap: 3px; /* Slightly reduce gap */
-        }
+    .nav-items a {
+        font-size: 0.5vw; /* Adjust font size for tablets */
     }
+}
 
-    /* Fine-tune layout for tablet-sized screens */
-    @media (min-width: 768px) and (max-width: 992px) {
-        .custom-logo {
-            width: 180px; /* Adjust logo size for tablets */
-        }
+/* Hide dropdown menu by default */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    list-style: none;
+    border: 1px solid #ccc;
+    z-index: 100;
+    width: 300px;
+}
 
-        .nav-items a {
-            font-size: 0.5vw; /* Adjust font size for tablets */
-        }
-    }
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Dropdown styling */
+.dropdown-menu li {
+    padding: 5px 0;
+}
+
+/* Adjust link style within the dropdown */
+.dropdown-menu li a {
+    text-decoration: none;
+    color: #000;
+}
+
+
     </style>
 </head>
 <body>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg custom-navbar">
-        <!-- Logo -->
-        <div class="custom-logo" style="display:flex;border-radius:40px;">
-            <a href="/">
-                <%= image_tag 'logo2.png', class: 'img-fluid custom-logo-img' %>
-            </a>
+    <!-- Logo -->
+    <div class="custom-logo" style="display:flex; border-radius:40px;">
+        <a href="/">
+            <%= image_tag 'logo2.png', class: 'img-fluid custom-logo-img', style: 'height:100px;width:300px;' %>
+        </a>
+    </div>
+
+    <!-- Navigation Items -->
+    <div class="nav-items">
+        
+        <a href="#about">About</a>
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle">Projects</a>
+            <ul class="dropdown-menu">
+                <li><a href="#projects">On-Going Projects</a></li>
+                <li><a href="#projects">Finished Projects</a></li>
+            </ul>
+        </div>
+        <a href="#services">Services</a>
+
+        <!-- Dropdown for Calculator -->
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle">Calculator</a>
+            <ul class="dropdown-menu">
+                <li><a href="/tiles-calculator">Tiles Calculator</a></li>
+                <li><a href="/concrete-calculator">Concrete Calculator</a></li>
+                <li><a href="/bricks-calculator">Bricks Calculator</a></li>
+                <li><a href="/paint-calculator">Paint Calculator</a></li>
+                <li><a href="/hardcore-calculator">Hardcore Calculator</a></li>
+                <li><a href="/loft-insulation-calculator">Loft Insulation</a></li>
+            </ul>
         </div>
 
-        <!-- Navigation Items -->
-        <div class="nav-items">
-        <a href="/">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#services">Services</a>
-            <a href="/ourwork">Gallery</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
-
-    <!-- Progress Bar and Calculator Section -->
-    <ul class="pro-features">
-        <a class="get-pro" style="margin-top:100px;" href="#">Calculator</a>
-        <div class="button">
-            <a href="/tiles-calculator" class="btn">Tiles Calculator</a>
-            <a href="/concrete-calculator" class="btn">Concrete Calculator</a>
-            <a href="/bricks-calculator" class="btn">Bricks Calculator</a>
-            <a href="/paint-calculator" class="btn">Paint Calculator</a>
-            <a href="/hardcore-calculator" class="btn">Hardcore Calculator</a>
-            <a href="/loft-insulation-calculator" class="btn">Loft Insulation Calculator</a>
-        </div>
-    </ul>
-
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
     <!-- JavaScript for Scroll and Popup -->
     <script>
         window.onscroll = function() { updateProgressBar() };
