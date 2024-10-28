@@ -1,287 +1,154 @@
-<!DOCTYPE html>
-<html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Tile Calculator</title>
-      <style>
-         body {
-            background-image: url('<%= asset_path("calculator.jpg") %>');
-
-         background-size: cover; /* Ensures the image covers the entire element */
-         background-position: center; /* Centers the image */
-          /* Prevents the image from repeating */
-         height: 100vh; /* Full height of the viewport */
-         margin: 0; /* Removes default margin */
-         }
-         .home-link {
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         text-decoration: none;
-         font-weight: bold;
-         height: 50px;
-         width: 100%;
-         background-color: black;
-         border-radius: 20px;
-         color: white;
-         margin-bottom: 20px; /* Adds space below the Home link */
-         }
-         .link-container {
-         display: flex;
-         justify-content: space-between; /* Space between links */
-         flex-wrap: wrap; /* Allows wrapping to new lines on smaller screens */
-         }
-         .link-item {
-         flex: 1; /* Each link takes equal space */
-         text-align: center;
-         margin: 5px; /* Space around links */
-         padding: 10px; /* Padding inside links */
-         background-color: black; /* Link background color */
-         color: black; /* Link text color */
-         border-radius: 10px; /* Rounded corners */
-         text-decoration: none; /* No underline */
-         transition: background-color 0.3s; /* Smooth background change */
-         }
-         .link-item:hover {
-         background-color: gray; /* Change background on hover */
-         }
-         /* Media Queries for responsiveness */
-         @media (max-width: 768px) {
-         .link-item {
-         flex: 1 1 45%; /* Two links per row on medium screens */
-         }
-         }
-         @media (max-width: 480px) {
-         .link-item {
-         flex: 1 1 100%; /* Full width for each link on small screens */
-         }
-         }
-         @media (min-width: 992px) {
-         .content-section {
-         margin-top: 93px;
-         }
-         }
-         .calculator {
-         background-color: blue;
-         padding: 30px;
-         color:white;
-         border-radius: 12px;
-         box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-         width: 100%;
-         background: rgba(255, 255, 255, 0.1);
-         backdrop-filter: blur(10px);
-         padding: 30px;
-         border-radius: 10px;
-         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-         }
-         h2 {
-         font-size: 1.8rem;
-         margin-bottom: 15px;
-         color: white;
-         text-align: center;
-         }
-         label {
-         font-size: 1rem;
-         color: white;
-         margin-bottom: 5px;
-         display: block;
-         }
-         input {
-         width: 100%;
-         padding: 10px;
-         margin-top: 5px;
-         border: 1px solid #ddd;
-         border-radius: 6px;
-         font-size: 1rem;
-         margin-bottom: 15px;
-         }
-         input:focus {
-         border-color: #007bff;
-         outline: none;
-         box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.2);
-         }
-         button {
-         width: 100%;
-         padding: 12px;
-         background-color: blue;
-         color: white;
-         border: none;
-         border-radius: 6px;
-         font-size: 1rem;
-         cursor: pointer;
-         transition: background-color 0.3s ease;
-         margin-top: 20px;
-         }
-         button:hover {
-         background-color: #0056b3;
-         }
-         #popup {
-         position: fixed;
-         top: 0;
-         left: 0;
-         width: 100vw;
-         height: 100vh;
-         background: rgba(0, 0, 0, 0.5);
-         display: none;
-         justify-content: center;
-         align-items: center;
-         }
-         #popup-content {
-         background-color: white;
-         padding: 20px;
-         border-radius: 10px;
-         box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-         text-align: center;
-         width: 100%;
-         max-width: 320px;
-         }
-         #popup-result {
-         font-size: 1.2rem;
-         margin-bottom: 20px;
-         }
-         #popup button {
-         padding: 10px 15px;
-         background-color: #28a745;
-         color: white;
-         border: none;
-         border-radius: 6px;
-         cursor: pointer;
-         font-size: 1rem;
-         }
-         #popup button:hover {
-         background-color: #218838;
-         }
-         .home-link {
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         text-decoration: none;
-         font-weight: bold;
-         height: 50px;
-         width: 100%;
-         background-color: black;
-         border-radius: 20px;
-         color: white;
-         margin-bottom: 20px; /* Adds space below the Home link */
-         }
-         .link-container {
-         display: flex;
-         justify-content: space-between; /* Space between links */
-         flex-wrap: wrap; /* Allows wrapping to new lines on smaller screens */
-         }
-         .link-item {
-         flex: 1; /* Each link takes equal space */
-         text-align: center;
-         margin: 5px; /* Space around links */
-         padding: 10px; /* Padding inside links */
-         background-color: black; /* Link background color */
-         color: white; /* Link text color */
-         border-radius: 10px; /* Rounded corners */
-         text-decoration: none; /* No underline */
-         transition: background-color 0.3s; /* Smooth background change */
-         }
-         .link-item:hover {
-         background-color: gray; /* Change background on hover */
-         }
-         /* Media Queries for responsiveness */
-         @media (max-width: 768px) {
-         .link-item {
-         flex: 1 1 45%; /* Two links per row on medium screens */
-         }
-         }
-         @media (max-width: 480px) {
-         .link-item {
-         flex: 1 1 100%; /* Full width for each link on small screens */
-         }
-         }
-      </style>
-   </head>
-   <body>
-      <% content_for :show_navbar do %>
-      <!-- Skip the navbar -->
-      <% end %>
-       <% content_for :show_footer do %>
+<body>
+  <% content_for :show_navbar do %>
+    <!-- Skip the navbar -->
+  <% end %>
+  <% content_for :show_footer do %>
     <!-- Skip the footer -->
   <% end %>
-      <a href="/" class="home-link">
-      <span>Home</span>
-      </a>
-      <div class="link-container">
-         <a href="/concrete-calculator" class="link-item">Concrete Calculator</a>
-         <a href="/bricks-calculator" class="link-item">Bricks Calculator</a>
-         <a href="/paint-calculator" class="link-item">Paint Calculator</a>
-         <a href="/hardcore-calculator" class="link-item">Hardcore Calculator</a>
-         <a href="/loft-insulation-calculator" class="link-item">Loft Insulation</a>
-      </div>
-      <div class="box">
-         <div class="calculator">
-            <h2 style="color:white;">Tile Area Calculator</h2>
-            <!-- Wall Dimensions -->
-            <h3 style="color:white;">Wall Dimensions</h3>
-            <label for="height">Wall Height (metres):</label>
-            <input type="number" id="height" value="1" step="0.01">
-            <label for="width1">Wall 1 Width (metres):</label>
-            <input type="number" id="width1" value="1" step="0.01">
-            <label for="width2">Wall 2 Width (metres):</label>
-            <input type="number" id="width2" value="1" step="0.01">
-            <label for="width3">Wall 3 Width (metres):</label>
-            <input type="number" id="width3" value="1" step="0.01">
-            <label for="width4">Wall 4 Width (metres):</label>
-            <input type="number" id="width4" value="1" step="0.01">
-            <!-- Floor Dimensions -->
-            <h3 style="color:white;">Floor Dimensions</h3>
-            <label for="floor-length">Floor Length (metres):</label>
-            <input type="number" id="floor-length" value="1" step="0.01">
-            <label for="floor-width">Floor Width (metres):</label>
-            <input type="number" id="floor-width" value="1" step="0.01">
-            <!-- Calculate Button -->
-            <button onclick="calculateArea()">Calculate</button>
-         </div>
-         <!-- Popup -->
-         <div id="popup">
-            <div id="popup-content">
-               <p id="popup-result"></p>
-               <button onclick="closePopup()">Close</button>
-            </div>
-         </div>
-      </div>
-      <script>
-         function calculateArea() {
-             const height = parseFloat(document.getElementById('height').value);
-             const width1 = parseFloat(document.getElementById('width1').value);
-             const width2 = parseFloat(document.getElementById('width2').value);
-             const width3 = parseFloat(document.getElementById('width3').value);
-             const width4 = parseFloat(document.getElementById('width4').value);
-             const floorLength = parseFloat(document.getElementById('floor-length').value);
-             const floorWidth = parseFloat(document.getElementById('floor-width').value);
-         
-             // Error handling for empty or invalid inputs
-             if (isNaN(height) || isNaN(width1) || isNaN(width2) || isNaN(width3) || isNaN(width4) || isNaN(floorLength) || isNaN(floorWidth)) {
-                 showPopup('Please enter valid dimensions for all fields.');
-                 return;
-             }
-         
-             // Calculate total wall area by summing the areas of all four walls
-             const wallArea = (height * width1) + (height * width2) + (height * width3) + (height * width4);
-         
-             // Calculate floor area
-             const floorArea = floorLength * floorWidth;
-         
-             // Total area
-             const totalArea = wallArea + floorArea;
-         
-             showPopup(`Total area to cover is approximately ${totalArea.toFixed(2)} square meters.`);
-         }
-         
-         function showPopup(message) {
-             document.getElementById('popup-result').innerText = message;
-             document.getElementById('popup').style.display = 'flex';
-         }
-         
-         function closePopup() {
-             document.getElementById('popup').style.display = 'none';
-         }
-      </script>
-   </body>
-</html>
+
+  <!-- Header Section -->
+  <div class="header">
+    <h2>Tile Area Calculator</h2>
+  </div>
+
+  <!-- Calculator Section -->
+  <div class="calculator">
+    <!-- Wall Dimensions Section -->
+    <h3>Wall Dimensions</h3>
+    <div class="input-group">
+      <label for="height">Height:</label>
+      <input type="number" id="height" value="1" step="0.01" oninput="calculateWallArea()"> meters
+    </div>
+    <div class="input-group">
+      <label for="width1">Width 1:</label>
+      <input type="number" id="width1" value="1" step="0.01" oninput="calculateWallArea()"> meters
+      <span id="area1Result">Area: 0.00 sq. meters</span>
+    </div>
+    <div class="input-group">
+      <label for="width2">Width 2:</label>
+      <input type="number" id="width2" value="1" step="0.01" oninput="calculateWallArea()"> meters
+      <span id="area2Result">Area: 0.00 sq. meters</span>
+    </div>
+    <div class="input-group">
+      <label for="width3">Width 3:</label>
+      <input type="number" id="width3" value="1" step="0.01" oninput="calculateWallArea()"> meters
+      <span id="area3Result">Area: 0.00 sq. meters</span>
+    </div>
+    <div class="input-group">
+      <label for="width4">Width 4:</label>
+      <input type="number" id="width4" value="1" step="0.01" oninput="calculateWallArea()"> meters
+      <span id="area4Result">Area: 0.00 sq. meters</span>
+    </div>
+    <p class="result-text">Wall Area: <span id="wallAreaResult">0.00</span> sq. meters</p>
+
+    <!-- Floor Dimensions Section -->
+    <h3>Floor Dimensions</h3>
+    <div class="input-group">
+      <label for="floor-length">Length:</label>
+      <input type="number" id="floor-length" value="1" step="0.01" oninput="calculateFloorArea()"> meters
+    </div>
+    <div class="input-group">
+      <label for="floor-width">Width:</label>
+      <input type="number" id="floor-width" value="1" step="0.01" oninput="calculateFloorArea()"> meters
+    </div>
+    <p class="result-text">Floor Area: <span id="floorAreaResult">0.00</span> sq. meters</p>
+
+    <!-- Total Area Result -->
+    <p class="total-area">Total Area to Cover: <span id="totalAreaResult">0.00</span> sq. meters</p>
+  </div>
+
+  <!-- Inline JavaScript for Calculations -->
+  <script>
+    function calculateWallArea() {
+      const height = parseFloat(document.getElementById('height').value);
+      const widths = [
+        parseFloat(document.getElementById('width1').value),
+        parseFloat(document.getElementById('width2').value),
+        parseFloat(document.getElementById('width3').value),
+        parseFloat(document.getElementById('width4').value)
+      ];
+
+      let wallArea = 0;
+
+      widths.forEach((width, index) => {
+        const area = height * width;
+        document.getElementById(`area${index + 1}Result`).innerText = `Area: ${area.toFixed(2)} sq. meters`;
+        wallArea += area;
+      });
+
+      document.getElementById('wallAreaResult').innerText = wallArea.toFixed(2);
+      updateTotalArea();
+    }
+
+    function calculateFloorArea() {
+      const floorLength = parseFloat(document.getElementById('floor-length').value);
+      const floorWidth = parseFloat(document.getElementById('floor-width').value);
+      const floorArea = floorLength * floorWidth;
+
+      document.getElementById('floorAreaResult').innerText = floorArea.toFixed(2);
+      updateTotalArea();
+    }
+
+    function updateTotalArea() {
+      const wallArea = parseFloat(document.getElementById('wallAreaResult').innerText);
+      const floorArea = parseFloat(document.getElementById('floorAreaResult').innerText);
+      const totalArea = wallArea + floorArea;
+
+      document.getElementById('totalAreaResult').innerText = totalArea.toFixed(2);
+    }
+  </script>
+
+  <!-- Styling Section -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d0f0c0; /* Light green background as per client preference */
+    }
+
+    .header h2 {
+      background-color: #004080; /* Dark blue as per reference image */
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .calculator {
+      background-color: #b0e57c; /* Light green section color */
+      padding: 15px;
+      border-radius: 8px;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    h3 {
+      color: #004080;
+      font-size: 1.2em;
+      margin-bottom: 5px;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .input-group label {
+      width: 80px;
+      font-size: 0.9em;
+      color: #004080;
+    }
+
+    .input-group input {
+      width: 80px; /* Increased input field width */
+      padding: 4px;
+      margin-right: 8px;
+    }
+
+    .result-text, .total-area, .input-group span {
+      font-weight: bold;
+      color: #004080;
+      margin-top: 10px;
+      font-size: 1em;
+    }
+  </style>
+</body>
