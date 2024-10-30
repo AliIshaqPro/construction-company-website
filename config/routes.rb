@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   #root 'admin#index'
   get 'dashboard', to: 'admin#index'
   get 'about', to: 'home#about'
-   get 'ourwork', to: 'home#ourwork'
+  get 'ourwork', to: 'home#ourwork'
   post 'ourwork', to: 'home#create_gallery'
   get 'projects', to: 'home#projects'
   get 'tiles-calculator', to: 'home#tiles'
