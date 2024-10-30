@@ -44,6 +44,7 @@
    padding: 20px;
    }
    .intro-title {
+      margin-top:40px;
    font-size: 3em;
    line-height: 1.5;
    margin: 0;
@@ -75,7 +76,7 @@
    /* Responsive adjustments */
    @media (max-width: 768px) {
    .intro-title {
-   font-size: 3em;
+   font-size: 2.5em;
    }
    .intro-description {
    font-size: 2em;
@@ -430,11 +431,11 @@
                <!-- Display Clients -->
                <% @clients.each do |client| %>
                <div class="col-lg-4 col-md-5 col-sm-9 mb-4">
-                  <div class="card">
+                  <div class="card" style="display:flex; justify-content:center;align-items:center;">
                      <% if client.image.attached? %>
-                     <%= image_tag client.image, style: 'width: 100%; height: 200px; object-fit: cover;', class: 'card-img-top' %>
+                     <%= image_tag client.image, style: 'width: 100px;border-radius:50px; height: 100px; object-fit: cover;', class: 'card-img-top' %>
                      <% else %>
-                     <%= image_tag 'logo.png', style: 'width: 100%; height: 200px; object-fit: cover;', class: 'card-img-top' %>
+                     <%= image_tag 'logo.png', style: 'width: 100px; border-radius:50px; height: 100px; object-fit: cover;', class: 'card-img-top' %>
                      <% end %>
                      <div class="card-body text-center">
                         <h5 class="card-title"><%= client.name %></h5>
