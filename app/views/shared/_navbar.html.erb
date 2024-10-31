@@ -11,7 +11,7 @@
             top: 0; 
             width: 100%;
             height: 70px; 
-            background-color: rgba(50, 50, 50, 0.5);
+            background-color: rgba(50, 50, 50, 0.7);
             backdrop-filter: blur(5px);
             display: flex;
             justify-content: space-between;
@@ -223,25 +223,26 @@
 <body>
 
 <nav class="navbar navbar-expand-lg custom-navbar">
-        <%= image_tag 'logo2.png', class: 'img-fluid custom-logo-img', style: 'height:70px;width:100px;' %>
+<a href="/">
+        <%= image_tag 'logo2.png', class: 'img-fluid custom-logo-img', style: 'height:70px;width:100px;' %></a>
 
         <!-- Navigation Items -->
         <div class="nav-items">
-            <a href="#about" style="font-weight: bold;">About</a>
+            <a href="#about" style="font-weight: bold;">ABOUT</a>
             
             <div class="dropdown">
-                <a href="#" class="dropdown-toggle" style="font-weight: bold;">Projects</a>
+                <a href="#" class="dropdown-toggle" style="font-weight: bold;">PROJECTS</a>
                 <ul class="dropdown-menu">
                     <li><a href="#projects">On-Going Projects</a></li>
                     <li><a href="#projects">Finished Projects</a></li>
                 </ul>
             </div>
             
-            <a href="#services" style="font-weight: bold;">Services</a>
+            <a href="#services" style="font-weight: bold;">SERVICES</a>
             
             <!-- Dropdown for Calculator -->
             <div class="dropdown">
-                <a href="#" class="dropdown-toggle" style="font-weight: bold;">Calculator</a>
+                <a href="#" class="dropdown-toggle" style="font-weight: bold;">CALCULATOR</a>
                 <ul class="dropdown-menu">
                     <li><a href="/tiles-calculator">Tiles Calculator</a></li>
                     <li><a href="/concrete-calculator">Concrete Calculator</a></li>
@@ -252,7 +253,7 @@
                 </ul>
             </div>
             
-            <a href="#contact" style="font-weight: bold;">Contact</a>
+            <a href="#contact" style="font-weight: bold;">CONTACT</a>
         </div>
 
     </nav>
