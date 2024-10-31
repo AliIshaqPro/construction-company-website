@@ -336,80 +336,87 @@
     <img id="modalImage" src="" alt="Full Screen Image">
 </div>
 <script>
-    const scrollingWrapper = document.getElementById('scrollingWrapper');
-    let isAutoScrolling = true;
-    let autoScrollInterval;
-    let scrollAmount = 0;
-    const scrollSpeed = 4; // Adjust this to change auto scroll speed
-    const modal = document.getElementById('imageModal');
-    const modalImage = document.getElementById('modalImage');
+   const scrollingWrapper = document.getElementById('scrollingWrapper');
+let isAutoScrolling = true;
+let autoScrollInterval;
+let scrollAmount = 0;
+const scrollSpeed = 4; // Adjust this to change auto scroll speed
+const modal = document.getElementById('imageModal');
+const modalImage = document.getElementById('modalImage');
 
-    // Function for auto-scrolling
-    function startAutoScroll() {
-        isAutoScrolling = true;
-        autoScrollInterval = setInterval(() => {
-            if (isAutoScrolling) {
-                scrollAmount -= scrollSpeed;
-                scrollingWrapper.style.transform = `translateX(${scrollAmount}px)`;
+// Function for auto-scrolling
+function startAutoScroll() {
+    isAutoScrolling = true;
+    autoScrollInterval = setInterval(() => {
+        if (isAutoScrolling) {
+            scrollAmount -= scrollSpeed;
+
+            // Check if the end of the images has been reached
+            if (Math.abs(scrollAmount) >= scrollingWrapper.scrollWidth / 2) {
+                // Reset scroll amount to create an infinite scrolling effect
+                scrollAmount = 0; 
             }
-        }, 20); // Lower interval for smoother scrolling
-    }
 
-    function stopAutoScroll() {
-        isAutoScrolling = false;
-        clearInterval(autoScrollInterval);
-    }
-
-    // Start auto-scrolling on page load
-    startAutoScroll();
-
-    // Detect swipe events for mobile
-    let startX;
-    scrollingWrapper.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        stopAutoScroll();
-    });
-
-    scrollingWrapper.addEventListener('touchmove', (e) => {
-        const touch = e.touches[0];
-        const diff = startX - touch.clientX;
-        scrollAmount -= diff;
-        scrollingWrapper.style.transform = `translateX(${scrollAmount}px)`;
-        startX = touch.clientX;
-    });
-
-    // Enable keyboard navigation for desktop
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-            stopAutoScroll();
-            scrollAmount += e.key === 'ArrowLeft' ? 20 : -20;
             scrollingWrapper.style.transform = `translateX(${scrollAmount}px)`;
         }
-    });
+    }, 20); // Lower interval for smoother scrolling
+}
 
-    // Full-Screen Modal Functionality
-    document.querySelectorAll('.scrolling-image').forEach(img => {
-        img.addEventListener('click', () => {
-            stopAutoScroll(); // Stop auto-scroll when modal opens
-            modal.style.display = 'flex';
-            modalImage.src = img.src;
-        });
-    });
+function stopAutoScroll() {
+    isAutoScrolling = false;
+    clearInterval(autoScrollInterval);
+}
 
-    // Close Modal
-    function closeModal() {
-        modal.style.display = 'none';
-        modal.classList.remove('zoomed');
-        setTimeout(startAutoScroll, 1000); // Resume auto-scrolling after a delay
+// Start auto-scrolling on page load
+startAutoScroll();
+
+// Detect swipe events for mobile
+let startX;
+scrollingWrapper.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    stopAutoScroll();
+});
+
+scrollingWrapper.addEventListener('touchmove', (e) => {
+    const touch = e.touches[0];
+    const diff = startX - touch.clientX;
+    scrollAmount -= diff;
+    scrollingWrapper.style.transform = `translateX(${scrollAmount}px)`;
+    startX = touch.clientX;
+});
+
+// Enable keyboard navigation for desktop
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        stopAutoScroll();
+        scrollAmount += e.key === 'ArrowLeft' ? 20 : -20;
+        scrollingWrapper.style.transform = `translateX(${scrollAmount}px)`;
     }
+});
 
-    // Zoom Functionality on Image Click
-    modalImage.addEventListener('click', () => {
-        modal.classList.toggle('zoomed');
+// Full-Screen Modal Functionality
+document.querySelectorAll('.scrolling-image').forEach(img => {
+    img.addEventListener('click', () => {
+        stopAutoScroll(); // Stop auto-scroll when modal opens
+        modal.style.display = 'flex';
+        modalImage.src = img.src;
     });
+});
 
-    // Attach closeModal to the close button
-    document.querySelector('.close-btn').addEventListener('click', closeModal);
+// Close Modal
+function closeModal() {
+    modal.style.display = 'none';
+    modal.classList.remove('zoomed');
+    setTimeout(startAutoScroll, 1000); // Resume auto-scrolling after a delay
+}
+
+// Zoom Functionality on Image Click
+modalImage.addEventListener('click', () => {
+    modal.classList.toggle('zoomed');
+});
+
+// Attach closeModal to the close button
+document.querySelector('.close-btn').addEventListener('click', closeModal);
 </script>
 
 
