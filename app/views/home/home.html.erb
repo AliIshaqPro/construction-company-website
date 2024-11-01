@@ -77,11 +77,11 @@
    /* Responsive adjustments */
    @media (max-width: 768px) {
    .intro-title {
-   font-size: 2.5em;
-   margin-top:40px;
+   font-size: 2em;
+   margin-top:100px;
    }
    .intro-description {
-   font-size: 2em;
+   font-size: 1.5em;
    }
    .schedule{
    margin-top: 20px;
@@ -95,7 +95,7 @@
    <%= image_tag "Extension.jpg", class: "intro-bg-image" %>
    <div class="intro-overlay"></div>
    <div class="intro-content">
-      <h1 class="intro-title" style="font-size:30px;margin-top:70px;">EXCEPTIONAL CONSTRUCTION & REFURBISHMENT SERVICES TAILORED FOR YOU</h1>
+      <h1 class="intro-title" style="margin-top:70px;">EXCEPTIONAL CONSTRUCTION & REFURBISHMENT SERVICES TAILORED FOR YOU</h1>
       <p class="intro-description">Quick & Quality Builders – Transforming Spaces with Precision and Care.</p>
       <a href="#services" class="intro-button">Learn More</a>
    </div>
@@ -209,9 +209,9 @@
          <% if @projects.present? %>
          <% @projects.each do |project| %>
          <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-            <div class="card" style="padding:10px;border-radius:20px;background-color:#1A76D1;display:flex;justify-content:center;align-items:center;border:1px solid white;">
+            <div class="card" style="padding:10px;border-radius:20px;display:flex;justify-content:center;align-items:center;border:2px solid #1A76D1; height:410px;">
                <% if project.image.attached? %>
-               <%= image_tag project.image, alt: "#{project.title} Image", class: 'card-img-top', style: 'width: 100%; height: 300px;border:1px solid white; object-fit: cover;' %>
+               <%= image_tag project.image, alt: "#{project.title} Image", class: 'card-img-top', style: 'width: 100%; height: 300px;border:1px solid #1A76D1; object-fit: cover;' %>
                <% else %>
                <%= image_tag 'slider2.jpg', alt: 'Default Image', class: 'card-img-top', style: 'width: 90%; height: 300px; object-fit: cover;' %> <!-- Fallback image -->
                <% end %>
@@ -235,189 +235,129 @@
 
 
 
+
+
+
+
+
+
+
 <style>
-    /* Scrolling Image Section */
-    .scrolling-image-section {
-        height: 250px;
-        overflow: hidden;
-        background-color: transparent;
-        position: relative;
-        white-space: nowrap; /* Prevent line breaks */
-    }
 
-    /* Image Wrapper */
-    .scrolling-images-wrapper {
-        display: inline-flex;
-        width: max-content;
-        transition: transform 0.3s ease;
-    }
+.carousel-img {
+  display: block;
+  margin: 0 auto; /* Centers the image */
+  width: 90%; /* Sets image width to 90% of screen width */
+  max-width: 700px; /* Optional maximum width for larger screens */
+  border: 5px solid #1A76D1; /* Adds a border to the image */
+  border-radius: 10px; /* Optional rounded corners */
+  padding:10px;
+}
 
-    /* Image Styling */
-    .scrolling-image {
-        width: 300px;
-        height: 250px;
-        object-fit: cover;
-        margin-right: 10px;
-        border: 2px solid #1A76D1;
-        border-radius: 20px;
-        padding: 5px;
-        cursor: pointer; /* Pointer cursor for interactive elements */
-    }
+@media (max-width: 768px) {
+  .carousel-img {
+    height: 300px; /* Sets height for mobile screens */
+    object-fit: cover; /* Ensures the image covers the space without stretching */
+    padding:4px;
+  }
+}
 
-    /* Fullscreen Modal */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        justify-content: center;
-        align-items: center;
-    }
+@media (min-width: 769px) and (max-width: 1024px) {
+  .carousel-img {
+    height: 400px; /* Adjusts height for tablets */
+    padding:7px;
+  }
+}
 
-    /* Modal Content (Image) */
-    .modal img {
-        max-width: 90%;
-        max-height: 90%;
-        border-radius: 10px;
-        cursor: zoom-in;
-        transition: transform 0.3s ease;
-    }
+@media (min-width: 1025px) {
+  .carousel-img {
+    height: 600px; /* Adjusts height for laptops and larger screens */
+    padding:10px;
+  }
+}
 
-    /* Zoomed-in State */
-    .modal.zoomed img {
-        transform: scale(1.5);
-        cursor: zoom-out;
-    }
-
-    /* Close Button */
-    .close-btn {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 24px;
-        color: white;
-        cursor: pointer;
-        background: transparent;
-        border: none;
-    }
 </style>
 
-<!-- Scrolling Image Section -->
-<section style="background-color:rgba(26, 118, 209, 0.2);" class="scrolling-image-section">
-    <div class="scrolling-images-wrapper" id="scrollingWrapper">
-        <% if @galleries.present? %>
-            <% @galleries.each do |gallery| %>
-                <% gallery.images.each do |image| %>
-                    <%= image_tag image.present? ? image : 'blog2.jpg', class: "scrolling-image" %>
-                <% end %>
-            <% end %>
-            <!-- Duplicate images for seamless scrolling -->
-            <% @galleries.each do |gallery| %>
-                <% gallery.images.each do |image| %>
-                    <%= image_tag image.present? ? image : 'blog2.jpg', class: "scrolling-image" %>
-                <% end %>
-            <% end %>
-        <% else %>
-            <%= image_tag 'blog2.jpg', class: "scrolling-image" %>
-            <%= image_tag 'blog2.jpg', class: "scrolling-image" %>
-            <%= image_tag 'blog2.jpg', class: "scrolling-image" %>
-            <%= image_tag 'blog2.jpg', class: "scrolling-image" %>
-        <% end %>
+
+
+
+
+
+
+
+
+
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="2000">
+      <%= image_tag 'g1.jpg', class: 'carousel-img' %>
     </div>
-</section>
+    <div class="carousel-item" data-bs-interval="2000">
+      <%= image_tag 'g2.jpg', class: 'carousel-img' %>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <%= image_tag 'g3.jpg', class: 'carousel-img' %>
+    </div>
+    <!-- Add more carousel items as needed -->
+    <div class="carousel-item" data-bs-interval="2000">
+      <%= image_tag 'g4.jpg', class: 'carousel-img' %>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <%= image_tag 'g5.jpg', class: 'carousel-img' %>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <%= image_tag 'g6.jpg', class: 'carousel-img' %>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <%= image_tag 'g7.jpg', class: 'carousel-img' %>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <%= image_tag 'g8.jpg', class: 'carousel-img' %>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <%= image_tag 'g9.jpg', class: 'carousel-img' %>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <%= image_tag 'g10.jpg', class: 'carousel-img' %>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <%= image_tag 'g11.jpg', class: 'carousel-img' %>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <%= image_tag 'g12.jpg', class: 'carousel-img' %>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <%= image_tag 'g13.jpg', class: 'carousel-img' %>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <%= image_tag 'g14.jpg', class: 'carousel-img' %>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <%= image_tag 'g15.jpg', class: 'carousel-img' %>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <%= image_tag 'g16.jpg', class: 'carousel-img' %>
+    </div>
+  </div>
 
-<!-- Modal for Fullscreen Image -->
-<div class="modal" id="imageModal">
-    <button class="close-btn" onclick="closeModal()">×</button>
-    <img id="modalImage" src="" alt="Full Screen Image">
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
-<script>
-   const scrollingWrapper = document.getElementById('scrollingWrapper');
-let isAutoScrolling = true;
-let autoScrollInterval;
-let scrollAmount = 0;
-const scrollSpeed = 4; // Adjust this to change auto scroll speed
-const modal = document.getElementById('imageModal');
-const modalImage = document.getElementById('modalImage');
 
-// Function for auto-scrolling
-function startAutoScroll() {
-    isAutoScrolling = true;
-    autoScrollInterval = setInterval(() => {
-        if (isAutoScrolling) {
-            scrollAmount -= scrollSpeed;
 
-            // Check if the end of the images has been reached
-            if (Math.abs(scrollAmount) >= scrollingWrapper.scrollWidth / 2) {
-                // Reset scroll amount to create an infinite scrolling effect
-                scrollAmount = 0; 
-            }
 
-            scrollingWrapper.style.transform = `translateX(${scrollAmount}px)`;
-        }
-    }, 20); // Lower interval for smoother scrolling
-}
 
-function stopAutoScroll() {
-    isAutoScrolling = false;
-    clearInterval(autoScrollInterval);
-}
 
-// Start auto-scrolling on page load
-startAutoScroll();
 
-// Detect swipe events for mobile
-let startX;
-scrollingWrapper.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-    stopAutoScroll();
-});
 
-scrollingWrapper.addEventListener('touchmove', (e) => {
-    const touch = e.touches[0];
-    const diff = startX - touch.clientX;
-    scrollAmount -= diff;
-    scrollingWrapper.style.transform = `translateX(${scrollAmount}px)`;
-    startX = touch.clientX;
-});
 
-// Enable keyboard navigation for desktop
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-        stopAutoScroll();
-        scrollAmount += e.key === 'ArrowLeft' ? 20 : -20;
-        scrollingWrapper.style.transform = `translateX(${scrollAmount}px)`;
-    }
-});
 
-// Full-Screen Modal Functionality
-document.querySelectorAll('.scrolling-image').forEach(img => {
-    img.addEventListener('click', () => {
-        stopAutoScroll(); // Stop auto-scroll when modal opens
-        modal.style.display = 'flex';
-        modalImage.src = img.src;
-    });
-});
-
-// Close Modal
-function closeModal() {
-    modal.style.display = 'none';
-    modal.classList.remove('zoomed');
-    setTimeout(startAutoScroll, 1000); // Resume auto-scrolling after a delay
-}
-
-// Zoom Functionality on Image Click
-modalImage.addEventListener('click', () => {
-    modal.classList.toggle('zoomed');
-});
-
-// Attach closeModal to the close button
-document.querySelector('.close-btn').addEventListener('click', closeModal);
-</script>
 
 
 
