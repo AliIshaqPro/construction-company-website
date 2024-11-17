@@ -4,11 +4,16 @@ class HomeController < ApplicationController
         @projects = Project.all  # Fetch all projects
         @consultation_request = ConsultationRequest.new
         @sliders = Slider.all
+        @reviews = Review.all
         @gallery = Gallery.new
         @galleries = Gallery.all # Fetch all existing gallery entries
     end
     # In your controller (e.g., HomeController)
-
+    def reviews
+      @reviews = Review.all
+      @review = Review.new # For the form
+    end
+  
 
 
     def ourwork

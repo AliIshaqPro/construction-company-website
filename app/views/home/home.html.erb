@@ -318,25 +318,25 @@
       <%= image_tag 'g9.jpg', class: 'carousel-img' %>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <%= image_tag 'g10.jpg', class: 'carousel-img' %>
+      <%= image_tag 'g1.jpg', class: 'carousel-img' %>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <%= image_tag 'g11.jpg', class: 'carousel-img' %>
+      <%= image_tag 'g2.jpg', class: 'carousel-img' %>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <%= image_tag 'g12.jpg', class: 'carousel-img' %>
+      <%= image_tag 'g3.jpg', class: 'carousel-img' %>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <%= image_tag 'g13.jpg', class: 'carousel-img' %>
+      <%= image_tag 'g4.jpg', class: 'carousel-img' %>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <%= image_tag 'g14.jpg', class: 'carousel-img' %>
+      <%= image_tag 'g5.jpg', class: 'carousel-img' %>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <%= image_tag 'g15.jpg', class: 'carousel-img' %>
+      <%= image_tag 'g6.jpg', class: 'carousel-img' %>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <%= image_tag 'g16.jpg', class: 'carousel-img' %>
+      <%= image_tag 'g7.jpg', class: 'carousel-img' %>
     </div>
   </div>
 
@@ -369,17 +369,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-   
-
 <!-- Pricing Table with Bootstrap Card Layout -->
 <section class="pricing-table section" style="background-color:rgba(26, 118, 209, 0.2);" id="services">
   <div class="container">
@@ -401,7 +390,7 @@
               <i class="icofont-bathtub mr-3" style="font-size: 40px; color:#1A76D1;"></i> <!-- Bathroom Icon -->
               <h5 class="card-title mb-0">Bathroom New/Refurbishment</h5>
             </div>
-            <p class="card-text"><strong>Starting from £2,500</strong></p>
+            
             <p class="card-text">We offer complete bathroom overhauls or new installations with high-quality materials and efficient workmanship.</p>
           </div>
           <div class="card-footer bg-white text-center">
@@ -418,7 +407,6 @@
               <i class="icofont-spoon-and-fork" style="font-size: 40px; color:#1A76D1;"></i> <!-- Kitchen Icon -->
               <h5 class="card-title mb-0">Kitchen New/Refurbishment</h5>
             </div>
-            <p class="card-text"><strong>Starting from £4,000</strong></p>
             <p class="card-text">Modern kitchen designs, custom cabinetry, high-end appliances, and tailored solutions for your home.</p>
           </div>
           <div class="card-footer bg-white text-center">
@@ -435,7 +423,6 @@
               <i class="icofont-home mr-3" style="font-size: 40px; color: #1A76D1;"></i> <!-- Extensions Icon -->
               <h5 class="card-title mb-0">Extensions</h5>
             </div>
-            <p class="card-text"><strong>Starting from £10,000</strong></p>
             <p class="card-text">Seamless structural integration to extend your home with complete project management services.</p>
           </div>
           <div class="card-footer bg-white text-center">
@@ -452,7 +439,6 @@
               <i class="icofont-building mr-3" style="font-size: 40px; color: #1A76D1;"></i> <!-- Loft Icon -->
               <h5 class="card-title mb-0">Loft Conversion</h5>
             </div>
-            <p class="card-text"><strong>Starting from £15,000</strong></p>
             <p class="card-text">Maximize your space with expert loft conversions, adding extra rooms and value to your property.</p>
           </div>
           <div class="card-footer bg-white text-center">
@@ -468,7 +454,6 @@
                 <i class="icofont-architecture" style="font-size: 40px; color: #1A76D1;"></i>
                 <h5 class="card-title mb-0">General Construction</h5> <!-- Updated Title -->
             </div>
-            <p class="card-text"><strong>Starting from £15,000</strong></p>
             <p class="card-text">Transform your property with our comprehensive general construction services, ensuring quality craftsmanship and attention to detail in every project.</p>
         </div>
         <div class="card-footer bg-white text-center">
@@ -485,7 +470,6 @@
               <i class="icofont-tools mr-3" style="font-size: 40px; color:#1A76D1;"></i> <!-- Refurbishment Icon -->
               <h5 class="card-title mb-0">Internal Full Refurbishment</h5>
             </div>
-            <p class="card-text"><strong>Starting from £8,000</strong></p>
             <p class="card-text">Full property renovations including demolition and high-quality finishes for your entire home.</p>
           </div>
           <div class="card-footer bg-white text-center">
@@ -498,74 +482,19 @@
   </div>
 </section>
 
-<!-- Start Clients Section -->
-<div class="clients" style="background-color:rgba(26, 118, 209, 0.2);" padding: 50px 0;">
-   <div class="container">
-      <div class="row">
-         <div class="col-12">
-            <center style="padding: 20px;">
-               <h1 style="font-size: 2.5rem; color: #1A76D1; font-weight: bold;">Our Clients</h1>
-               <p style="color: #555; font-size: 1.1rem; margin-top: 10px;">We're proud to work with these esteemed clients</p>
-            </center>
-            <div class="row justify-content-center">
-               <!-- Display Clients -->
-               <% @clients.each do |client| %>
-               <div class="col-lg-4 col-md-5 col-sm-9 mb-4">
-                  <div class="card" style="
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content:center;
-                        border: none;
-                        border-radius: 20px;
-                        overflow: hidden;
-                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-                        transition: transform 0.3s, box-shadow 0.3s;
-                        height: 320px; /* Increased height */
-                        padding-top: 50px; /* Added padding */
-                     ">
-                     
-                     <!-- Image Placeholder -->
-                     <% if client.image.attached? %>
-                     <%= image_tag client.image, style: '
-                        width: 120px;
-                        height: 120px;
-                        object-fit: cover;
-                        border-radius: 50%;
-                        
-                        border: 4px solid #1A76D1;
-                     ', class: 'card-img-top' %>
-                     <% else %>
-                     <%= image_tag 'logo.png', style: '
-                        width: 120px;
-                        height: 120px;
-                        object-fit: cover;
-                        border-radius: 50%;
-                        margin-top: -30px;
-                        border: 4px solid #1A76D1;
-                     ', class: 'card-img-top' %>
-                     <% end %>
-
-                     <div class="card-body text-center" style="padding: 20px; width: 100%;">
-                        <h5 class="card-title" style="font-size: 1.3rem; color: #1A76D1; font-weight: 600; margin-bottom: 10px;">
-                           <%= client.name %>
-                        </h5>
-                        <p style="color: #333; font-size: 1rem; margin-bottom: 5px;">
-                           <strong>Company:</strong> <%= client.company %>
-                        </p>
-                        <p style="color: #777; font-size: 0.9rem;">
-                           <strong>Joined Us:</strong> <%= client.created_at.strftime("%B %d, %Y") %>
-                        </p>
-                     </div>
-                  </div>
-               </div>
-               <% end %>
-            </div>
-         </div>
-      </div>
-   </div>
+<div class="review-strip">
+  <div class="reviews">
+    <% @reviews.each do |review| %>
+      <p>
+        <%= image_tag review.image.attached? ? review.image : 'g1.jpg', 
+                      style: 'width: 50px; margin-right:10px; height: 50px; border-radius:50%;' %>
+        "<%= review.content %>"</br>
+        <%= review.name %>
+      </p>
+    <% end %>
+  </div>
 </div>
-<!-- End Clients Section -->
+
 
 <!-- Add Hover Effect for Cards -->
 <style>
@@ -573,12 +502,48 @@
       transform: translateY(-10px);
       box-shadow: 0 6px 15px rgba(26, 118, 209, 0.3);
    }
+   body {
+  font-family: Arial, sans-serif;
+}
+
+.review-strip {
+  width: 100%;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  border: 2px solid #ddd;
+  padding: 10px 0;
+  position: relative;
+  white-space: nowrap;
+}
+
+.reviews {
+  display: flex;
+  animation: scroll-left 20s linear infinite;
+  white-space: nowrap;
+}
+
+.reviews p {
+  display: flex;
+  margin: 0 50px;
+  font-size: 16px;
+
+  color: #333;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
 </style>
 
   <style>
-   .why-choose {
-      
-   }
+  
    .choose-left h3 {
        font-size: 36px;
        font-weight: bold;
@@ -855,69 +820,5 @@
                </div>
             </div>
          </section>
-         <!-- Start Blog Area -->
-         <section class="blog section" style="background-color:rgba(26, 118, 209, 0.2);" id="blog">
-            <div class="container">
-               <div class="row">
-                  <div class="col-lg-12">
-                     <div class="section-title">
-                        <h2>Stay Updated with Our Latest Construction Projects & News</h2>
-                        <%= image_tag 'section-img.png' %>
-                        <p>Discover the latest developments in our construction projects, industry trends, and company updates.</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-lg-4 col-md-6 col-12">
-                     <!-- Single Blog -->
-                     <div class="single-news">
-                        <div class="news-head">
-                           <%= image_tag 'blog1.jpg', style: 'width: 100%; height: 200px; object-fit: cover;' %>
-                        </div>
-                        <div class="news-body">
-                           <div class="news-content">
-                              <div class="date">22 Aug, 2020</div>
-                              <h2><a href="blog-single.html">New Project Announcement: Skyline Tower Construction</a></h2>
-                              <p class="text">We are excited to unveil our latest project, the Skyline Tower, a cutting-edge commercial building that will redefine the skyline.</p>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- End Single Blog -->
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-12">
-                     <!-- Single Blog -->
-                     <div class="single-news">
-                        <div class="news-head">
-                           <%= image_tag 'blog2.jpg', style: 'width: 100%; height: 200px; object-fit: cover;' %>
-                        </div>
-                        <div class="news-body">
-                           <div class="news-content">
-                              <div class="date">15 Jul, 2020</div>
-                              <h2><a href="blog-single.html">5 Tips for Sustainable Construction Practices</a></h2>
-                              <p class="text">Learn how our company is incorporating eco-friendly materials and methods to build greener and more sustainable structures.</p>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- End Single Blog -->
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-12">
-                     <!-- Single Blog -->
-                     <div class="single-news">
-                        <div class="news-head">
-                           <%= image_tag 'blog3.jpg', style: 'width: 100%; height: 200px; object-fit: cover;' %>
-                        </div>
-                        <div class="news-body">
-                           <div class="news-content">
-                              <div class="date">05 Jan, 2020</div>
-                              <h2><a href="blog-single.html">Expanding Our Business Solutions in Construction</a></h2>
-                              <p class="text">Discover how we are providing innovative business solutions for large-scale industrial projects, ensuring quality and timely delivery.</p>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- End Single Blog -->
-                  </div>
-               </div>
-            </div>
-         </section>
-         <!-- End Blog Area -->  
+        
          

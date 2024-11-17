@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get "consultation_requests/create"
   # Set the admin index as the root path
   #root 'admin#index'
+  get 'reviews', to: 'home#reviews' # Reviews page in HomeController
+ 
+  resources :reviews, only: :create 
   get 'dashboard', to: 'admin#index'
   get 'about', to: 'home#about'
   get 'ourwork', to: 'home#ourwork'

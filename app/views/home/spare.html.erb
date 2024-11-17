@@ -1,0 +1,71 @@
+#///////////////////////////////////CLIENTS/////////////////////////////////////////////////////
+
+<!-- Start Clients Section -->
+<div class="clients" style="background-color:rgba(26, 118, 209, 0.2);" padding: 50px 0;">
+   <div class="container">
+      <div class="row">
+         <div class="col-12">
+            <center style="padding: 20px;">
+               <h1 style="font-size: 2.5rem; color: #1A76D1; font-weight: bold;">Our Clients</h1>
+               <p style="color: #555; font-size: 1.1rem; margin-top: 10px;">We're proud to work with these esteemed clients</p>
+            </center>
+            <div class="row justify-content-center">
+               <!-- Display Clients -->
+               <% @clients.each do |client| %>
+               <div class="col-lg-4 col-md-5 col-sm-9 mb-4">
+                  <div class="card" style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content:center;
+                        border: none;
+                        border-radius: 20px;
+                        overflow: hidden;
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                        transition: transform 0.3s, box-shadow 0.3s;
+                        height: 320px; /* Increased height */
+                        padding-top: 50px; /* Added padding */
+                     ">
+                     
+                     <!-- Image Placeholder -->
+                     <% if client.image.attached? %>
+                     <%= image_tag client.image, style: '
+                        width: 120px;
+                        height: 120px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                        
+                        border: 4px solid #1A76D1;
+                     ', class: 'card-img-top' %>
+                     <% else %>
+                     <%= image_tag 'logo.png', style: '
+                        width: 120px;
+                        height: 120px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                        margin-top: -30px;
+                        border: 4px solid #1A76D1;
+                     ', class: 'card-img-top' %>
+                     <% end %>
+
+                     <div class="card-body text-center" style="padding: 20px; width: 100%;">
+                        <h5 class="card-title" style="font-size: 1.3rem; color: #1A76D1; font-weight: 600; margin-bottom: 10px;">
+                           <%= client.name %>
+                        </h5>
+                        <p style="color: #333; font-size: 1rem; margin-bottom: 5px;">
+                           <strong>Company:</strong> <%= client.company %>
+                        </p>
+                        <p style="color: #777; font-size: 0.9rem;">
+                           <strong>Joined Us:</strong> <%= client.created_at.strftime("%B %d, %Y") %>
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <% end %>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- End Clients Section -->
+#//////////////////////////////////////////CLIENTS ENND HERE////////////////////////////

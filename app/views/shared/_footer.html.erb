@@ -29,7 +29,12 @@
                            <li><a href="/ourwork"><i class="fa fa-caret-right" aria-hidden="true"></i>Gallery</a></li>
                            <li><a href="/services"><i class="fa fa-caret-right" aria-hidden="true"></i>Our Services</a></li>
                            <li><a href="/projects"><i class="fa fa-caret-right" aria-hidden="true"></i>Projects</a></li>
-                           <li><a href="/careers"><i class="fa fa-caret-right" aria-hidden="true"></i>Careers</a></li>
+                           <li>
+  <%= link_to reviews_path do %>
+    <i class="fa fa-caret-right" aria-hidden="true"></i> View Reviews
+  <% end %>
+</li>
+
                         </ul>
                      </div>
                      <div class="col-lg-6 col-md-6 col-12">
