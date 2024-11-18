@@ -493,15 +493,7 @@
           <%= review.name %>
         </p>
       <% end %>
-      <!-- Duplicate reviews for seamless scroll -->
-      <% @reviews.each do |review| %>
-        <p>
-          <%= image_tag review.image.attached? ? review.image : 'default.png', 
-                        style: 'width: 50px; margin-right:10px; height: 50px; border-radius:50%;' %>
-          "<%= review.content %>"</br>
-          <%= review.name %>
-        </p>
-      <% end %>
+      
     <% else %>
       <p>No reviews available at the moment. Be the first to share your experience!</p>
     <% end %>
