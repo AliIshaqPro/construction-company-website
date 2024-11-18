@@ -14,7 +14,19 @@ class HomeController < ApplicationController
       @review = Review.new # For the form
     end
   
-
+    def create
+      @feedback = Feedback.new(feedback_params)
+  
+      respond_to do |format|
+        if @feedback.save
+          format.html { redirect_to admin_feedback_path(@feedback), notice: "Feedback was successfully created." }
+          format.json { render :show, status: :created, location: @feedback }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @feedback.errors, status: :unprocessable_entity }
+        end
+      end
+    end
 
     def ourwork
         @gallery = Gallery.new
@@ -63,5 +75,8 @@ class HomeController < ApplicationController
 
   def gallery_params
     params.require(:gallery).permit(images: [])
+  end
+  def feedback_params
+    params.require(:feedback).permit(:client_id, :content, :rating)
   end
 end

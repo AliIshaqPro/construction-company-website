@@ -2,6 +2,14 @@
   body{
    background-color:rgba(26, 118, 209, 0.2);
   }
+  .card {
+  transition: transform 0.3s ease-in-out; /* Smooth transition for transform */
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Move the card up by 10px on hover */
+}
+
    .intro-section {
    position: relative;
    width: 100%;
@@ -91,6 +99,22 @@
    }
    }
 </style>
+<!-- Feedback Form -->
+<ul class="pro-features">
+    <a class="get-pro" href="#">FeedBack</a>
+    <div class="button">
+        <!-- Feedback Form -->
+        <form action="/">
+            <div class="form-group">
+                <textarea name="content" rows="4" placeholder="Write your feedback here..." class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn">Submit Feedback</button>
+            </div>
+        </form>
+    </div>
+</ul>
+
 <div class="intro-section">
    <%= image_tag "Extension.jpg", class: "intro-bg-image" %>
    <div class="intro-overlay"></div>
@@ -482,205 +506,127 @@
     </div>
   </div>
 </section>
-<div class="review-strip">
-  <div class="reviews">
-    <% if @reviews.any? %>
-      <% @reviews.each do |review| %>
-        <p>
-          <%= image_tag review.image.attached? ? review.image : 'default.png', 
-                        style: 'width: 50px; margin-right:10px; height: 50px; border-radius:50%;' %>
-          "<%= review.content %>"</br>
-          <%= review.name %>
-        </p>
-      <% end %>
-      
-    <% else %>
-      <p>No reviews available at the moment. Be the first to share your experience!</p>
-    <% end %>
-  </div>
-</div>
 
-<style>
-  body {
-    font-family: Arial, sans-serif;
-  }
-
-  /* Parent Container */
-  .review-strip {
-    width: 100%;
-    overflow-x: auto; /* Enable manual scrolling */
-    overflow-y: hidden;
-    background-color: #f9f9f9;
-    border: 2px solid #ddd;
-    padding: 10px 0;
-    position: relative;
-    white-space: nowrap;
-    scroll-behavior: smooth; /* Smooth manual scrolling */
-  }
-
-  /* Scrollbar Hidden */
-  .review-strip::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, and Edge */
-  }
-
-  .review-strip {
-    -ms-overflow-style: none; /* Internet Explorer */
-    scrollbar-width: none; /* Firefox */
-  }
-
-  /* Inner Content */
-  .reviews {
-    display: flex;
-    animation: scroll-left 30s linear infinite; /* Auto-scroll animation */
-  }
-
-  .reviews:hover {
-    animation-play-state: paused; /* Pause auto-scroll on hover */
-  }
-
-  .reviews p {
-    display: flex;
-    margin: 0 50px;
-    font-size: 16px;
-    color: #333;
-  }
-
-  /* Keyframe Animation */
-  @keyframes scroll-left {
-    0% {
-      transform: translateX(0); /* Start from the beginning */
-    }
-    100% {
-      transform: translateX(-50%); /* Scroll left by half the content (seamless loop) */
-    }
-  }
-
-  /* Mobile Adjustments */
-  @media (max-width: 768px) {
-    .reviews {
-      animation: scroll-left 20s linear infinite; /* Faster scrolling on mobile */
-    }
-  }
-</style>
-
-
-  <style>
-  
-   .choose-left h3 {
-       font-size: 36px;
-       font-weight: bold;
-       color: black;
-       margin-bottom: 20px;
-       position: relative;
-   }
-   .choose-left h3::after {
-       content: "";
-       width: 50px;
-       height: 4px;
-       background-color: #f9b234;
-       position: absolute;
-       bottom: -10px;
-       left: 0;
-   }
-   .choose-left p {
-       font-size: 18px;
-       color: black;
-       line-height: 1.6;
-       margin-bottom: 20px;
-   }
-   .choose-left ul.list {
-       padding: 0;
-       list-style: none;
-   }
-   .choose-left ul.list li {
-       font-size: 16px;
-       color: black;
-       line-height: 1.8;
-       margin-bottom: 10px;
-       position: relative;
-       padding-left: 25px;
-   }
-   .choose-left ul.list li i {
-       color: black;
-       position: absolute;
-       left: 0;
-       top: 4px;
-   }
-   .choose-right .video-image {
-       position: relative;
-       overflow: hidden;
-       border-radius: 8px;
-       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-   }
-   .choose-right .video-image img {
-       width: 100%;
-       height: auto;
-       transition: transform 0.3s ease;
-   }
-   .choose-right .video-image:hover img {
-       transform: scale(1.05);
-   }
-   .choose-right .video-image a.video {
-       position: absolute;
-       top: 50%;
-       left: 50%;
-       transform: translate(-50%, -50%);
-       font-size: 40px;
-       color: black;
-       background-color: rgba(0, 0, 0, 0.6);
-       width: 80px;
-       height: 80px;
-       line-height: 60px;
-       text-align: center;
-       border-radius: 50%;
-       transition: background-color 0.3s ease;
-   }
-   .choose-right .video-image a.video:hover {
-       background-color: #f9b234;
-   }
-</style>
-
-<section class="why-choose section" style="background-color:rgba(26, 118, 209, 0.2);">
+<!-- Start Reviews Section -->
+<div class="reviews" style="background-color:rgba(26, 118, 209, 0.2); padding: 50px 0;">
    <div class="container">
-      <div class="row align-items-center">
-         <!-- Who We Are Text Section -->
-         <div class="col-lg-6 col-12">
-            <div class="choose-left">
-               <h3>Who We Are</h3>
-               <p>We are a trusted construction company dedicated to delivering high-quality, sustainable solutions that stand the test of time.</p>
-               <p>Driven by innovation and a commitment to excellence, we bring your visions to life with precision and professionalism.</p>
-               <div class="row">
-    <div class="col-lg-6">
-        <ul class="list">
-            <li style="color: black;"><i class="fa fa-check-circle"></i> Skilled professionals and expert craftsmanship</li>
-            <li style="color: black;"><i class="fa fa-check-circle"></i> Timely and budget-conscious completion</li>
-            <li style="color: black;"><i class="fa fa-check-circle"></i> Customized solutions for unique needs</li>
-        </ul>
-    </div>
-    <div class="col-lg-6">
-        <ul class="list">
-            <li style="color: black;"><i class="fa fa-check-circle"></i> Cutting-edge technology and equipment</li>
-            <li style="color: black;"><i class="fa fa-check-circle"></i> Uncompromising safety and quality</li>
-            <li style="color: black;"><i class="fa fa-check-circle"></i> Exceptional customer service</li>
-        </ul>
-    </div>
-</div>
+      <div class="row">
+         <div class="col-12">
+            <center style="padding: 20px;">
+               <h1 style="font-size: 2.5rem; color: #1A76D1; font-weight: bold;">What Our Clients Say</h1>
+               <p style="color: #555; font-size: 1.1rem; margin-top: 10px;">We're proud of the feedback we receive</p>
+            </center>
+            <div class="row justify-content-center">
+               <!-- Display Reviews -->
+               <% if @reviews.any? %>
+                  <% @reviews.each do |review| %>
+                  <div class="col-lg-4 col-md-5 col-sm-9 mb-4">
+                     <div class="card" style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        border: none;
+                        border-radius: 20px;
+                        overflow: hidden;
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                        transition: transform 0.3s, box-shadow 0.3s;
+                        height: 320px;
+                        padding-top: 30px;
+                     ">
+                        <!-- Reviewer Image -->
+                        <%= image_tag review.image.attached? ? review.image : 'default.png', 
+                           class: 'rounded-circle', 
+                           style: 'width: 120px; height: 120px; object-fit: cover; border: 1px solid #1A76D1;' %>
 
-            </div>
-         </div>
-         <!-- Video Section -->
-         <div class="col-lg-6 col-12">
-            <div class="choose-right">
-               <div class="video-image">
-                  <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="Construction Worker on Scaffolding" />
-                  
-                     
-                  </a>
-               </div>
+                        <div class="card-body text-center" style="padding: 20px; width: 100%;">
+                           <p class="card-text" style="color: #777; font-size: 1rem; margin-bottom: 10px; font-style: italic;">
+                              "<%= truncate(review.content, length: 120) %>"
+                           </p>
+                           <h5 class="card-title" style="font-size: 1.3rem; color: #1A76D1; font-weight: 600; margin-bottom: 10px;">
+                              <%= review.name %>
+                           </h5>
+                        </div>
+                     </div>
+                  </div>
+                  <% end %>
+               <% else %>
+                  <div class="col-12 text-center">
+                     <p class="text-muted">No reviews available at the moment. Be the first to share your experience!</p>
+                  </div>
+               <% end %>
             </div>
          </div>
       </div>
    </div>
+</div>
+<!-- End Reviews Section -->
+
+
+
+<section class="why-choose section py-5" style="background-color: rgba(26, 118, 209, 0.2);">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Who We Are Text Section -->
+      <div class="col-lg-6 col-12 mb-4 mb-lg-0">
+        <div class="choose-left">
+          <h3 class="mb-4">Who We Are</h3>
+          <p class="text-dark mb-3">
+            We are a trusted construction company dedicated to delivering high-quality, sustainable solutions that stand the test of time.
+          </p>
+          <p class="text-dark mb-4">
+            Driven by innovation and a commitment to excellence, we bring your visions to life with precision and professionalism.
+          </p>
+          <div class="row">
+            <div class="col-lg-6">
+              <ul class="list-unstyled">
+                <li class="d-flex align-items-start mb-2">
+                  <i class="fa fa-check-circle text-primary me-2"></i>
+                  <span class="text-dark">Skilled professionals and expert craftsmanship</span>
+                </li>
+                <li class="d-flex align-items-start mb-2">
+                  <i class="fa fa-check-circle text-primary me-2"></i>
+                  <span class="text-dark">Timely and budget-conscious completion</span>
+                </li>
+                <li class="d-flex align-items-start mb-2">
+                  <i class="fa fa-check-circle text-primary me-2"></i>
+                  <span class="text-dark">Customized solutions for unique needs</span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-6">
+              <ul class="list-unstyled">
+                <li class="d-flex align-items-start mb-2">
+                  <i class="fa fa-check-circle text-primary me-2"></i>
+                  <span class="text-dark">Cutting-edge technology and equipment</span>
+                </li>
+                <li class="d-flex align-items-start mb-2">
+                  <i class="fa fa-check-circle text-primary me-2"></i>
+                  <span class="text-dark">Uncompromising safety and quality</span>
+                </li>
+                <li class="d-flex align-items-start mb-2">
+                  <i class="fa fa-check-circle text-primary me-2"></i>
+                  <span class="text-dark">Exceptional customer service</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Video Section -->
+      <div class="col-lg-6 col-12">
+        <div class="choose-right">
+          <div class="video-image position-relative overflow-hidden rounded">
+            <img
+              src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+              alt="Construction Worker on Scaffolding"
+              class="img-fluid w-100"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 

@@ -19,14 +19,9 @@
     <%= f.file_field :image %>
   </div>
 
-  <!-- Pin Code Field -->
-  <div class="form-group">
-    <%= f.label :pin_code, 'Pin Code' %>
-    <%= f.text_field :pin_code, class: 'form-control', required: true, placeholder: 'Enter Pin Code' %>
-  </div>
-
   <%= f.submit 'Submit Review', class: 'btn btn-primary' %>
 <% end %>
+
 
 <div class="review-strip">
   <div class="reviews">
@@ -37,11 +32,6 @@
                         style: 'width: 50px; margin-right: 10px; height: 50px; border-radius: 50%;' %>
           "<%= review.content %>"</br>
           <%= review.name %>
-
-          <%= form_with url: review_path(review), method: :delete, local: true do |f| %>
-            <%= f.text_field :pin_code, placeholder: "Enter PIN", class: "form-control", style: "width: 150px; display: inline-block;" %>
-            <%= f.submit "Delete", class: "btn btn-danger btn-sm" %>
-          <% end %>
         </p>
       <% end %>
     <% else %>
@@ -49,6 +39,7 @@
     <% end %>
   </div>
 </div>
+
 
 
 </div>
