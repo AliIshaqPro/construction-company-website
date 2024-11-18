@@ -1,4 +1,4 @@
-<h1><%= action_name.capitalize %> FAQ</h1>
+<div style="margin-top:180px; margin-bottom:50px;" class="container"><h1><%= action_name.capitalize %> FAQ</h1>
 
 <%= form_with(model: [:admin, @faq], local: true) do |form| %>
   <div class="form-group">
@@ -13,3 +13,4 @@
 
   <%= form.submit 'Save', class: 'btn btn-primary' %>
 <% end %>
+</div>

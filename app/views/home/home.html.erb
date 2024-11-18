@@ -243,36 +243,37 @@
 
 
 <style>
-
 .carousel-img {
   display: block;
   margin: 0 auto; /* Centers the image */
-  width: 90%; /* Sets image width to 90% of screen width */
-  max-width: 700px; /* Optional maximum width for larger screens */
+  width: 100%; /* Sets image width to 100% of screen width */
+  height: auto; /* Makes sure the height adjusts to the width */
+  object-fit: cover; /* Ensures the image covers the container area without stretching */
   border: 5px solid #1A76D1; /* Adds a border to the image */
   border-radius: 10px; /* Optional rounded corners */
-  padding:10px;
+  padding: 10px;
 }
 
 @media (max-width: 768px) {
   .carousel-img {
     height: 300px; /* Sets height for mobile screens */
     object-fit: cover; /* Ensures the image covers the space without stretching */
-    padding:4px;
+    padding: 4px;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .carousel-img {
     height: 400px; /* Adjusts height for tablets */
-    padding:7px;
+    padding: 7px;
   }
 }
 
 @media (min-width: 1025px) {
   .carousel-img {
     height: 600px; /* Adjusts height for laptops and larger screens */
-    padding:10px;
+    width: 100%; /* Makes the image take full width */
+    padding: 10px;
   }
 }
 
@@ -481,66 +482,95 @@
     </div>
   </div>
 </section>
-
 <div class="review-strip">
   <div class="reviews">
-    <% @reviews.each do |review| %>
-      <p>
-        <%= image_tag review.image.attached? ? review.image : 'g1.jpg', 
-                      style: 'width: 50px; margin-right:10px; height: 50px; border-radius:50%;' %>
-        "<%= review.content %>"</br>
-        <%= review.name %>
-      </p>
+    <% if @reviews.any? %>
+      <% @reviews.each do |review| %>
+        <p>
+          <%= image_tag review.image.attached? ? review.image : 'default.png', 
+                        style: 'width: 50px; margin-right:10px; height: 50px; border-radius:50%;' %>
+          "<%= review.content %>"</br>
+          <%= review.name %>
+        </p>
+      <% end %>
+      <!-- Duplicate reviews for seamless scroll -->
+      <% @reviews.each do |review| %>
+        <p>
+          <%= image_tag review.image.attached? ? review.image : 'default.png', 
+                        style: 'width: 50px; margin-right:10px; height: 50px; border-radius:50%;' %>
+          "<%= review.content %>"</br>
+          <%= review.name %>
+        </p>
+      <% end %>
+    <% else %>
+      <p>No reviews available at the moment. Be the first to share your experience!</p>
     <% end %>
   </div>
 </div>
 
-
-<!-- Add Hover Effect for Cards -->
 <style>
-   .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 6px 15px rgba(26, 118, 209, 0.3);
-   }
-   body {
-  font-family: Arial, sans-serif;
-}
-
-.review-strip {
-  width: 100%;
-  overflow: hidden;
-  background-color: #f9f9f9;
-  border: 2px solid #ddd;
-  padding: 10px 0;
-  position: relative;
-  white-space: nowrap;
-}
-
-.reviews {
-  display: flex;
-  animation: scroll-left 20s linear infinite;
-  white-space: nowrap;
-}
-
-.reviews p {
-  display: flex;
-  margin: 0 50px;
-  font-size: 16px;
-
-  color: #333;
-}
-
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0);
+  body {
+    font-family: Arial, sans-serif;
   }
-  100% {
-    transform: translateX(-50%);
+
+  /* Parent Container */
+  .review-strip {
+    width: 100%;
+    overflow-x: auto; /* Enable manual scrolling */
+    overflow-y: hidden;
+    background-color: #f9f9f9;
+    border: 2px solid #ddd;
+    padding: 10px 0;
+    position: relative;
+    white-space: nowrap;
+    scroll-behavior: smooth; /* Smooth manual scrolling */
   }
-}
 
+  /* Scrollbar Hidden */
+  .review-strip::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Edge */
+  }
 
+  .review-strip {
+    -ms-overflow-style: none; /* Internet Explorer */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* Inner Content */
+  .reviews {
+    display: flex;
+    animation: scroll-left 30s linear infinite; /* Auto-scroll animation */
+  }
+
+  .reviews:hover {
+    animation-play-state: paused; /* Pause auto-scroll on hover */
+  }
+
+  .reviews p {
+    display: flex;
+    margin: 0 50px;
+    font-size: 16px;
+    color: #333;
+  }
+
+  /* Keyframe Animation */
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0); /* Start from the beginning */
+    }
+    100% {
+      transform: translateX(-50%); /* Scroll left by half the content (seamless loop) */
+    }
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 768px) {
+    .reviews {
+      animation: scroll-left 20s linear infinite; /* Faster scrolling on mobile */
+    }
+  }
 </style>
+
 
   <style>
   

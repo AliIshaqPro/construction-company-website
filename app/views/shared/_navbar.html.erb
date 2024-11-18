@@ -30,9 +30,7 @@
             font-size: 1.2vw;
             padding: 10px;
             border: 2px solid transparent;
-            
             border-radius: 40px;
-            
         }
     
      /* Hover effect */
@@ -143,7 +141,7 @@
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
     border-radius: 10px;
-    transition: transform 1s ease, opacity 1.5s ease; /* Smooth transition for dropdown */
+    transition: transform 1s ease, opacity 0.5s ease; /* Smooth transition for dropdown */
     transform: translateY(-20px); /* Initially above the view */
     opacity: 0; /* Initially hidden */
     left: -75px; /* Move dropdown 10px to the left */
@@ -155,7 +153,7 @@
     display: block;
     transform: translateY(0);
     opacity: 1;
-    animation: dropdownSlide 1.5s ease forwards;
+    animation: dropdownSlide 0.5s ease forwards;
 }
 
 /* Prevent dropdown from overflowing screen */
@@ -214,7 +212,7 @@
 
 /* Apply the animation to the dropdown when active */
 .dropdown.active .dropdown-menu {
-    animation: dropdownSlide 1.5s ease forwards;
+    animation: dropdownSlide 0.5s ease forwards;
 }
 
 

@@ -57,24 +57,15 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+        <ul style="margin-right:60px;" class="navbar-nav ms-auto">
           <li class="nav-item">
             <%= link_to 'Manage Projects', admin_projects_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Manage Clients', admin_clients_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Manage Feedbacks', admin_feedbacks_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
             <%= link_to 'Consultation Requests', admin_consultation_requests_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
             <%= link_to 'Manage FAQs', admin_faqs_path, class: 'nav-link' %> 
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Manage Sliders', sliders_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
             <%= button_to 'Log Out', destroy_admin_session_path, method: :delete, class: 'btn btn-danger ms-2' %>

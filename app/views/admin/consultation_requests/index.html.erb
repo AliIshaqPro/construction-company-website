@@ -1,33 +1,35 @@
 <div class="box" style="margin-top:150px;">
+  <h1>Consultation Requests</h1>
 
-<h1>Consultation Requests</h1>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Project Type</th>
-      <th>Consultant</th>
-      <th>Preferred Date</th>
-      <th>Message</th>
-      <th>Created At</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @consultation_requests.each do |request| %>
-      <tr>
-        <td><%= request.name %></td>
-        <td><%= request.email %></td>
-        <td><%= request.phone %></td>
-        <td><%= request.project_type %></td>
-        <td><%= request.consultant %></td>
-        <td><%= request.preferred_date %></td>
-        <td><%= request.message %></td>
-        <td><%= request.created_at.strftime("%B %d, %Y") %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <!-- Wrapper for horizontal scrolling -->
+  <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+    <table class="table" style="min-width: 800px;"> <!-- Optional: Set a minimum width for the table -->
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Project Type</th>
+          <th>Consultant</th>
+          <th>Preferred Date</th>
+          <th>Message</th>
+          <th>Created At</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @consultation_requests.each do |request| %>
+          <tr>
+            <td><%= request.name %></td>
+            <td><%= request.email %></td>
+            <td><%= request.phone %></td>
+            <td><%= request.project_type %></td>
+            <td><%= request.consultant %></td>
+            <td><%= request.preferred_date %></td>
+            <td><%= request.message %></td>
+            <td><%= request.created_at.strftime("%B %d, %Y") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
